@@ -1,7 +1,11 @@
+@use 'styles/variables.module' as *;
+@use 'styles/functions.module' as *;
+
 .title {
     color: #333;
     padding-bottom: 20px;
     text-align: center;
+    font-size: pxToRem(144px);
 }
 .text {
     color: #777;

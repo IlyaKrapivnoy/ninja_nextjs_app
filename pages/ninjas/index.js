@@ -20,7 +20,7 @@ const Index = ({ ninjas }) => {
                 <meta name="keywords" content="ninjas" />
             </Head>
             <div>
-                <h1>Total Ninjas</h1>
+                <h1 className={styles.title}>Total Ninjas</h1>
                 {ninjas.map((ninja) => (
                     <Link href={'/ninjas/' + ninja.id} key={ninja.id}>
                         <a className={styles.single}>
