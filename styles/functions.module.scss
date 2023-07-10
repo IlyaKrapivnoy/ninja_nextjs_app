@@ -1,0 +1,12 @@
+$base-font-size: 16px;
+
+@function toRem($values...) {
+  $rem-values: ();
+
+  @each $value in $values {
+    $rem-value: $value / $base-font-size * 1rem;
+    $rem-values: append($rem-values, $rem-value);
+  }
+
+  @return $rem-values;
+}

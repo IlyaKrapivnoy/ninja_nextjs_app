@@ -1,11 +1,23 @@
+@use 'styles/variables.module' as *;
+@use 'styles/functions.module' as *;
+
+.nav {
+    display: flex;
+    align-items: center;
+    max-height: toRem(62px);
+}
+
 .title {
     color: #333;
-    padding-bottom: 20px;
+    padding: toRem(20px);
     text-align: center;
+    font-size: toRem(144px);
 }
+
 .text {
     color: #777;
 }
+
 .btn {
     display: block;
     width: 150px;
