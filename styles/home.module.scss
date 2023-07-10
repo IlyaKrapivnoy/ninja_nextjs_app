@@ -1,6 +1,12 @@
 @use 'styles/variables.module' as *;
 @use 'styles/functions.module' as *;
 
+.nav {
+    display: flex;
+    align-items: center;
+    max-height: toRem(62px);
+}
+
 .title {
     color: #333;
     padding: toRem(20px);
