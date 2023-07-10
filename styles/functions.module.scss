@@ -1,6 +1,6 @@
-$base-font-size: 16px; // Set your base font size here
+$base-font-size: 16px;
 
-@function pxToRem($values...) {
+@function toRem($values...) {
   $rem-values: ();
 
   @each $value in $values {

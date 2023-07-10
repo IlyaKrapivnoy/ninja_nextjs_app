@@ -1,12 +1,14 @@
 @use 'styles/variables.module' as *;
+@use 'styles/functions.module' as *;
 
 .single {
-    padding: 2px 16px;
     background: $white;
     display: block;
-    margin: 20px 10px;
+    margin: toRem(20px, 10px);
+    padding: toRem(2px, 16px);
     border-left: 8px solid $white;
 }
+
 .single:hover {
     border-left: 8px solid $thistle-rose;
 }
