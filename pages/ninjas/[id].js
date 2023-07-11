@@ -1,4 +1,5 @@
 import React from 'react';
+import { useRouter } from 'next/router';
 
 export const getStaticPaths = async () => {
     const res = await fetch('https://jsonplaceholder.typicode.com/users');
@@ -27,8 +28,15 @@ export const getStaticProps = async (context) => {
 };
 
 const Details = ({ ninja }) => {
+    const router = useRouter();
+
+    const handleGoBack = () => {
+        router.back();
+    };
+
     return (
         <div>
+            <button onClick={handleGoBack}>back</button>
             <h1>{ninja.name}</h1>
             <p>email: {ninja.email}</p>
             <p>street: {ninja.address.street}</p>
