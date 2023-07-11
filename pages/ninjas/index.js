@@ -1,7 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
-import styles from '../../styles/ninjas.module.scss';
 import Link from 'next/link';
+import styles from '../../styles/ninjas.module.scss';
 
 export const getStaticProps = async () => {
     const res = await fetch('https://jsonplaceholder.typicode.com/users');
