@@ -1,0 +1,14 @@
+{
+  "extends": "stylelint-config-recommended-scss",
+  "plugins": ["stylelint-scss"],
+  "rules": {
+    "block-no-empty": true,
+    "color-no-invalid-hex": true,
+    "scss/no-global-function-names": null,
+    "property-no-unknown": true,
+    "selector-pseudo-class-no-unknown": true,
+    "selector-pseudo-element-no-unknown": true,
+    "font-family-no-duplicate-names": true,
+    "declaration-block-no-duplicate-properties": true
+  }
+}

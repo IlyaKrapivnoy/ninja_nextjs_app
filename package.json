@@ -6,7 +6,8 @@
         "build": "next build",
         "start": "next start",
         "lint": "next lint -- --fix",
-        "prettier": "prettier --write ."
+        "prettier": "prettier --write .",
+        "lint:styles": "stylelint '**/*.{css,scss}'"
     },
     "dependencies": {
         "next": "12.0.10",
@@ -17,6 +18,10 @@
     "devDependencies": {
         "eslint": "8.9.0",
         "eslint-config-next": "12.0.10",
-        "husky": "^8.0.3"
+        "husky": "^8.0.3",
+        "stylelint": "^15.10.1",
+        "stylelint-config-recommended": "^13.0.0",
+        "stylelint-config-recommended-scss": "^12.0.0",
+        "stylelint-scss": "^5.0.1"
     }
 }
