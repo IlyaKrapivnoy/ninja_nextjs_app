@@ -1,8 +1,8 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import Logo from '../public/logo.png';
-import styles from '../styles/home.module.scss';
+import Logo from '../../../public/logo.png';
+import styles from '../../web-pages/Home/Home.module.scss';
 
 const Navbar = () => {
     return (
@@ -16,7 +16,7 @@ const Navbar = () => {
                 <Link href="/">
                     <a>Home</a>
                 </Link>
-                <Link href="/about">
+                <Link href="/pages/about">
                     <a>About</a>
                 </Link>
                 <Link href="/ninjas">
