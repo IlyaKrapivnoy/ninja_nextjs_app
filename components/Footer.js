@@ -1,7 +1,9 @@
 import React from 'react';
 
 const Footer = () => {
-    return <footer>Copyright 2022 Ninja List</footer>;
+    const currentYear = new Date().getFullYear();
+
+    return <footer>&copy; Copyright {currentYear} Ilya Krapivnoy</footer>;
 };
 
 export default Footer;
