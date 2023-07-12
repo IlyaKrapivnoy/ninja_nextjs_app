@@ -1,13 +1,14 @@
 import React from 'react';
-import Head from 'next/head';
+import CustomHead from '../../base/CustomHead/CustomHead';
+import { ABOUT_CUSTOM_HEAD } from '../../../constants/customHead';
 
 const About = () => {
     return (
         <>
-            <Head>
-                <title>Ninja List | About</title>
-                <meta name="keywords" content="ninjas" />
-            </Head>
+            <CustomHead
+                title={ABOUT_CUSTOM_HEAD.title}
+                description={ABOUT_CUSTOM_HEAD.description}
+            />
             <div>
                 <h1>About</h1>
                 <p>

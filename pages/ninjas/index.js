@@ -1,7 +1,8 @@
 import React from 'react';
-import Head from 'next/head';
-import styles from '../../styles/ninjas.module.scss';
 import Link from 'next/link';
+import styles from '../../styles/ninjas.module.scss';
+import CustomHead from '../../components/base/CustomHead/CustomHead';
+import { NINJAS_CUSTOM_HEAD } from '../../constants/customHead';
 
 export const getStaticProps = async () => {
     const res = await fetch('https://jsonplaceholder.typicode.com/users');
@@ -15,10 +16,10 @@ export const getStaticProps = async () => {
 const Index = ({ ninjas }) => {
     return (
         <>
-            <Head>
-                <title>Ninja List | Total Ninjas</title>
-                <meta name="keywords" content="ninjas" />
-            </Head>
+            <CustomHead
+                title={NINJAS_CUSTOM_HEAD.title}
+                description={NINJAS_CUSTOM_HEAD.description}
+            />
             <div>
                 <h1 className={styles.title}>Total Ninjas</h1>
                 {ninjas.map((ninja) => (

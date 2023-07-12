@@ -1,22 +1,41 @@
 import React from 'react';
+import { useRouter } from 'next/router';
 
-export const getStaticPaths = async () => {
+const Details = ({ ninja }) => {
+    const router = useRouter();
+
+    const handleGoBack = () => {
+        router.back();
+    };
+
+    return (
+        <div>
+            <button onClick={handleGoBack}>Back</button>
+            <h1>{ninja.name}</h1>
+            <p>Email: {ninja.email}</p>
+            <p>Street: {ninja.address.street}</p>
+            <p>Suite: {ninja.address.suite}</p>
+            <p>City: {ninja.address.city}</p>
+            <p>Zipcode: {ninja.address.zipcode}</p>
+        </div>
+    );
+};
+
+export async function getStaticPaths() {
     const res = await fetch('https://jsonplaceholder.typicode.com/users');
     const data = await res.json();
 
-    const paths = data.map((ninja) => {
-        return {
-            params: { id: ninja.id.toString() }
-        };
-    });
+    const paths = data.map((ninja) => ({
+        params: { id: ninja.id.toString() }
+    }));
 
     return {
         paths,
         fallback: false
     };
-};
+}
 
-export const getStaticProps = async (context) => {
+export async function getStaticProps(context) {
     const id = context.params.id;
     const res = await fetch('https://jsonplaceholder.typicode.com/users/' + id);
     const data = await res.json();
@@ -24,19 +43,6 @@ export const getStaticProps = async (context) => {
     return {
         props: { ninja: data }
     };
-};
-
-const Details = ({ ninja }) => {
-    return (
-        <div>
-            <h1>{ninja.name}</h1>
-            <p>email: {ninja.email}</p>
-            <p>street: {ninja.address.street}</p>
-            <p>suite: {ninja.address.suite}</p>
-            <p>city: {ninja.address.city}</p>
-            <p>zipcode: {ninja.address.zipcode}</p>
-        </div>
-    );
-};
+}
 
 export default Details;

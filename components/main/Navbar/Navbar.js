@@ -1,14 +1,14 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import Logo from '../public/logo.png';
-import styles from '../styles/home.module.scss';
+import Logo from '../../../public/logo.png';
+import styles from '../../web-pages/Home/Home.module.scss';
 
 const Navbar = () => {
     return (
         <nav className={styles.nav}>
             <div className="logo">
-                <Link href="/">
+                <Link href="/" passHref>
                     <Image src={Logo} width="100%" height="100%" alt="logo" />
                 </Link>
             </div>
@@ -16,7 +16,7 @@ const Navbar = () => {
                 <Link href="/">
                     <a>Home</a>
                 </Link>
-                <Link href="/about">
+                <Link href="/About">
                     <a>About</a>
                 </Link>
                 <Link href="/ninjas">
