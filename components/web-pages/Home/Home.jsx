@@ -1,15 +1,15 @@
 import React from 'react';
 import Link from 'next/link';
-import Head from 'next/head';
 import styles from './Home.module.scss';
+import CustomHead from '../../base/CustomHead/CustomHead';
 
 function Home() {
     return (
         <>
-            <Head>
-                <title>Ninja List | Home</title>
-                <meta name="keywords" content="ninjas" />
-            </Head>
+            <CustomHead
+                title="Ninja List | Home"
+                description="There is a unique hub for ninhas. Find out our advantages and make your life even more heroic"
+            />
             <div>
                 <h1 className={styles.title}>Homepage</h1>
                 <p className={styles.text}>
