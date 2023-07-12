@@ -2,13 +2,14 @@ import React from 'react';
 import Link from 'next/link';
 import styles from './Home.module.scss';
 import CustomHead from '../../base/CustomHead/CustomHead';
+import { HOME_CUSTOM_HEAD } from '../../../constants/customHead';
 
 function Home() {
     return (
         <>
             <CustomHead
-                title="Ninja List | Home"
-                description="There is a unique hub for ninhas. Find out our advantages and make your life even more heroic"
+                title={HOME_CUSTOM_HEAD.title}
+                description={HOME_CUSTOM_HEAD.description}
             />
             <div>
                 <h1 className={styles.title}>Homepage</h1>

@@ -1,12 +1,13 @@
 import React from 'react';
 import CustomHead from '../../base/CustomHead/CustomHead';
+import { ABOUT_CUSTOM_HEAD } from '../../../constants/customHead';
 
 const About = () => {
     return (
         <>
             <CustomHead
-                title="Ninja List | About"
-                description="The best way to find your own ninha path!"
+                title={ABOUT_CUSTOM_HEAD.title}
+                description={ABOUT_CUSTOM_HEAD.description}
             />
             <div>
                 <h1>About</h1>

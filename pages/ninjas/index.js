@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import styles from '../../styles/ninjas.module.scss';
 import CustomHead from '../../components/base/CustomHead/CustomHead';
+import { NINJAS_CUSTOM_HEAD } from '../../constants/customHead';
 
 export const getStaticProps = async () => {
     const res = await fetch('https://jsonplaceholder.typicode.com/users');
@@ -16,8 +17,8 @@ const Index = ({ ninjas }) => {
     return (
         <>
             <CustomHead
-                title="Ninja List | Total Ninjas"
-                description="There is a unique card of a ninha"
+                title={NINJAS_CUSTOM_HEAD.title}
+                description={NINJAS_CUSTOM_HEAD.description}
             />
             <div>
                 <h1 className={styles.title}>Total Ninjas</h1>
