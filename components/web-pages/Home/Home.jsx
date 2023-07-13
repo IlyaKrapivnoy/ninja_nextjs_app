@@ -25,8 +25,8 @@ const Home = () => {
                     maxime molestias rerum tempora vitae? A alias cumque debitis
                     eaque itaque labore, repudiandae totam vero!
                 </p>
-                <Link href="/ninjas">
-                    <a className={styles.btn}>See Ninja Listing</a>
+                <Link href="/ninjas" className={styles.btn}>
+                    See Ninja Listing
                 </Link>
             </div>
         </>

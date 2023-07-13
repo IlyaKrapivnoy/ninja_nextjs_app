@@ -9,19 +9,13 @@ const Navbar = () => {
         <nav className={styles.nav}>
             <div className="logo">
                 <Link href="/" passHref>
-                    <Image src={Logo} width="100%" height="100%" alt="logo" />
+                    <Image src={Logo} width="100" alt="logo" />
                 </Link>
             </div>
             <div className="navItems">
-                <Link href="/">
-                    <a>Home</a>
-                </Link>
-                <Link href="/About">
-                    <a>About</a>
-                </Link>
-                <Link href="/ninjas">
-                    <a>Ninja List</a>
-                </Link>
+                <Link href="/">Home</Link>
+                <Link href="/About">About</Link>
+                <Link href="/ninjas">Ninja List</Link>
             </div>
         </nav>
     );
