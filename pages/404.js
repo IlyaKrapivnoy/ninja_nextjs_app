@@ -7,7 +7,6 @@ const NonFount = () => {
 
     useEffect(() => {
         setTimeout(() => {
-            // router.go(-1);
             router.push('/');
         }, 3000);
     }, [router]);

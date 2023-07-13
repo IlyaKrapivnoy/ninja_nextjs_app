@@ -4,7 +4,7 @@ import styles from './Home.module.scss';
 import CustomHead from '../../base/CustomHead/CustomHead';
 import { HOME_CUSTOM_HEAD } from '../../../constants/customHead';
 
-function Home() {
+const Home = () => {
     return (
         <>
             <CustomHead
@@ -31,5 +31,5 @@ function Home() {
             </div>
         </>
     );
-}
+};
 export default Home;
