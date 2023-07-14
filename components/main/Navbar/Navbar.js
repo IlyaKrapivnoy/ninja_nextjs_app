@@ -12,11 +12,23 @@ const Navbar = () => {
                     <Image src={Logo} width="100" alt="logo" />
                 </Link>
             </div>
-            <div className={styles.navItems}>
-                <Link href="/">Home</Link>
-                <Link href="/About">About</Link>
-                <Link href="/ninjas">Ninja List</Link>
-            </div>
+            <ul className={styles.navItems}>
+                <li className={styles.navItem}>
+                    <Link href="/" className={styles.navLink}>
+                        Home
+                    </Link>
+                </li>
+                <li className={styles.navItem}>
+                    <Link href="/About" className={styles.navLink}>
+                        About
+                    </Link>
+                </li>
+                <li className={styles.navItem}>
+                    <Link href="/ninjas" className={styles.navLink}>
+                        Ninja List
+                    </Link>
+                </li>
+            </ul>
         </nav>
     );
 };
