@@ -24,6 +24,7 @@ const Index = ({ ninjas }) => {
             <h1 className={styles.title}>Total Ninjas</h1>
             {ninjas.map((ninja) => (
                 <Link
+                    passHref
                     href={`/ninjas/${ninja.id}`}
                     key={ninja.id}
                     className={styles.single}
