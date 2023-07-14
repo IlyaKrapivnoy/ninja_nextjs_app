@@ -4,7 +4,7 @@ import styles from './Home.module.scss';
 import CustomHead from '../../base/CustomHead/CustomHead';
 import { HOME_CUSTOM_HEAD } from '../../../constants/customHead';
 
-function Home() {
+const Home = () => {
     return (
         <>
             <CustomHead
@@ -25,11 +25,11 @@ function Home() {
                     maxime molestias rerum tempora vitae? A alias cumque debitis
                     eaque itaque labore, repudiandae totam vero!
                 </p>
-                <Link href="/ninjas">
-                    <a className={styles.btn}>See Ninja Listing</a>
+                <Link href="/ninjas" className={styles.btn}>
+                    See Ninja Listing
                 </Link>
             </div>
         </>
     );
-}
+};
 export default Home;

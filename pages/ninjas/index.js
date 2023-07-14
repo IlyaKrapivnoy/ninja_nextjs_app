@@ -20,16 +20,18 @@ const Index = ({ ninjas }) => {
                 title={NINJAS_CUSTOM_HEAD.title}
                 description={NINJAS_CUSTOM_HEAD.description}
             />
-            <div>
-                <h1 className={styles.title}>Total Ninjas</h1>
-                {ninjas.map((ninja) => (
-                    <Link href={'/ninjas/' + ninja.id} key={ninja.id}>
-                        <a className={styles.single}>
-                            <h3>{ninja.name}</h3>
-                        </a>
-                    </Link>
-                ))}
-            </div>
+
+            <h1 className={styles.title}>Total Ninjas</h1>
+            {ninjas.map((ninja) => (
+                <Link
+                    passHref
+                    href={`/ninjas/${ninja.id}`}
+                    key={ninja.id}
+                    className={styles.single}
+                >
+                    <h3>{ninja.name}</h3>
+                </Link>
+            ))}
         </>
     );
 };

@@ -1,0 +1,14 @@
+@use 'styles/functions.module' as *;
+
+.container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+.main {
+    flex: 1;
+    padding: toRem(0px, 16px);
+}

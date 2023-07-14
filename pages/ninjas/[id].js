@@ -9,7 +9,7 @@ const Details = ({ ninja }) => {
     };
 
     return (
-        <div>
+        <>
             <button onClick={handleGoBack}>Back</button>
             <h1>{ninja.name}</h1>
             <p>Email: {ninja.email}</p>
@@ -17,7 +17,7 @@ const Details = ({ ninja }) => {
             <p>Suite: {ninja.address.suite}</p>
             <p>City: {ninja.address.city}</p>
             <p>Zipcode: {ninja.address.zipcode}</p>
-        </div>
+        </>
     );
 };
 
