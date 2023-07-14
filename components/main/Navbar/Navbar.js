@@ -1,7 +1,6 @@
-import React from 'react';
+import { useRouter } from 'next/router';
 import Link from 'next/link';
 import Image from 'next/image';
-import { useRouter } from 'next/router';
 import cn from 'classnames';
 import styles from './Navbar.module.scss';
 import Logo from '../../../public/logo.png';
@@ -19,18 +18,26 @@ const Navbar = () => {
             </div>
 
             <ul className={styles.navItems}>
-                {navigationLinks.map(({ id, path, label }) => (
-                    <li key={id} className={styles.navItem}>
-                        <Link
-                            href={path}
-                            className={cn(styles.navLink, {
-                                [styles.active]: router.pathname === path
-                            })}
-                        >
-                            {label}
-                        </Link>
-                    </li>
-                ))}
+                {navigationLinks.map(({ id, path, label }) => {
+                    const isActive =
+                        label === 'Ninja List'
+                            ? router.pathname.startsWith('/ninjas') ||
+                              /\d+$/.test(router.pathname)
+                            : router.pathname === path;
+
+                    return (
+                        <li key={id} className={styles.navItem}>
+                            <Link
+                                href={path}
+                                className={cn(styles.navLink, {
+                                    [styles.active]: isActive
+                                })}
+                            >
+                                {label}
+                            </Link>
+                        </li>
+                    );
+                })}
             </ul>
         </nav>
     );
