@@ -1,0 +1,10 @@
+@use 'styles/variables.module' as *;
+
+.container {
+    text-align: center;
+
+    a {
+        color: $deep-sky-blue;
+        text-decoration: underline;
+    }
+}

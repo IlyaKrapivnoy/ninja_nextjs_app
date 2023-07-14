@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
+import styles from '../components/web-pages/PageNotFound/404.module.scss';
 
 const NonFount = () => {
     const router = useRouter();
@@ -11,7 +12,7 @@ const NonFount = () => {
         }, 3000);
     }, [router]);
     return (
-        <div className="not-found">
+        <div className={styles.container}>
             <h1>Oops...</h1>
             <h2>That page cannot be found</h2>
             <p>
