@@ -5,15 +5,10 @@ import { useRouter } from 'next/router';
 import cn from 'classnames';
 import styles from './Navbar.module.scss';
 import Logo from '../../../public/logo.png';
+import { navigationLinks } from '../../../data/navbar';
 
 const Navbar = () => {
     const router = useRouter();
-
-    const navigationLinks = [
-        { path: '/', label: 'Home' },
-        { path: '/about', label: 'About' },
-        { path: '/ninjas', label: 'Ninja List' }
-    ];
 
     return (
         <nav className={styles.nav}>
@@ -24,15 +19,15 @@ const Navbar = () => {
             </div>
 
             <ul className={styles.navItems}>
-                {navigationLinks.map((link) => (
-                    <li key={link.path} className={styles.navItem}>
+                {navigationLinks.map(({ id, path, label }) => (
+                    <li key={id} className={styles.navItem}>
                         <Link
-                            href={link.path}
+                            href={path}
                             className={cn(styles.navLink, {
-                                [styles.active]: router.pathname === link.path
+                                [styles.active]: router.pathname === path
                             })}
                         >
-                            {link.label}
+                            {label}
                         </Link>
                     </li>
                 ))}
