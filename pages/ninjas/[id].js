@@ -1,5 +1,6 @@
 import React from 'react';
 import { useRouter } from 'next/router';
+import styles from '../../components/web-pages/Ninjas/Ninjas.module.scss';
 
 const Details = ({ ninja }) => {
     const router = useRouter();
@@ -9,15 +10,31 @@ const Details = ({ ninja }) => {
     };
 
     return (
-        <>
-            <button onClick={handleGoBack}>Back</button>
-            <h1>{ninja.name}</h1>
-            <p>Email: {ninja.email}</p>
-            <p>Street: {ninja.address.street}</p>
-            <p>Suite: {ninja.address.suite}</p>
-            <p>City: {ninja.address.city}</p>
-            <p>Zipcode: {ninja.address.zipcode}</p>
-        </>
+        <div className={styles.ninjaCard}>
+            <div className={styles.headerCard}>
+                <button onClick={handleGoBack} className={styles.backBtn}>
+                    &larr;
+                </button>
+                <h1>{ninja.name}</h1>
+            </div>
+            <ul className={styles.listItems}>
+                <li>
+                    <span>Email:</span> {ninja.email}
+                </li>
+                <li>
+                    <span>Street:</span> {ninja.address.street}
+                </li>
+                <li>
+                    <span>Suite:</span> {ninja.address.suite}
+                </li>
+                <li>
+                    <span>City:</span> {ninja.address.city}
+                </li>
+                <li>
+                    <span>Zipcode:</span> {ninja.address.zipcode}
+                </li>
+            </ul>
+        </div>
     );
 };
 

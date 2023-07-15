@@ -21,7 +21,7 @@ const Index = ({ ninjas }) => {
                 description={NINJAS_CUSTOM_HEAD.description}
             />
 
-            <h1 className={styles.title}>Total Ninjas</h1>
+            <h1>Total Ninjas</h1>
             {ninjas.map((ninja) => (
                 <Link
                     passHref

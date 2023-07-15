@@ -1,0 +1,41 @@
+@use 'styles/variables.module' as *;
+@use 'styles/functions.module' as *;
+
+.ninjaCard {
+    display: flex;
+    flex-direction: column;
+    max-width: fit-content;
+    min-width: 300px;
+    padding: toRem(50px, 20px, 40px);
+    border: 1px solid $dark-platinum;
+    border-radius: 10px;
+
+    .headerCard {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        max-height: 30px;
+        margin-bottom: 30px;
+
+        .backBtn {
+            display: flex;
+            max-height: 24px;
+            cursor: pointer;
+        }
+    }
+
+    .listItems {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        li {
+            color: $gray;
+            padding-bottom: toRem(12px);
+
+            span {
+                color: #000;
+            }
+        }
+    }
+}
