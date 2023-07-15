@@ -1,5 +1,6 @@
 @use 'styles/variables.module' as *;
 @use 'styles/functions.module' as *;
+@use 'styles/mixins.module' as *;
 
 .ninjaCard {
     display: flex;
@@ -34,6 +35,8 @@
         .ninjaName {
             font-size: toRem(26px);
             font-weight: 900;
+
+            @include ellipsis($max-width: toRem(240px));
         }
     }
 
