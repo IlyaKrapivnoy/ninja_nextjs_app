@@ -12,7 +12,7 @@ const Home = () => {
                 description={HOME_CUSTOM_HEAD.description}
             />
             <div>
-                <h1 className={styles.title}>Homepage</h1>
+                <h1 className={styles.homeTitle}>Homepage</h1>
                 <p className={styles.text}>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                     Atque delectus deserunt distinctio dolore, facere illum

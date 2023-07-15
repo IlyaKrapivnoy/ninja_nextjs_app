@@ -21,19 +21,22 @@ const Index = ({ ninjas }) => {
                 description={NINJAS_CUSTOM_HEAD.description}
             />
 
-            <h1>Total Ninjas</h1>
-            {ninjas.map((ninja, index) => (
-                <Link
-                    passHref
-                    href={`/ninjas/${ninja.id}`}
-                    key={ninja.id}
-                    className={styles.single}
-                >
-                    <h3>
-                        #{ninja.id}. {ninja.name}
-                    </h3>
-                </Link>
-            ))}
+            <h1 className="title">Total Ninjas</h1>
+            <ul>
+                {ninjas.map((ninja) => (
+                    <li key={ninja.id} className={styles.single}>
+                        <Link
+                            passHref
+                            href={`/ninjas/${ninja.id}`}
+                            key={ninja.id}
+                        >
+                            <h3>
+                                #{ninja.id}. {ninja.name}
+                            </h3>
+                        </Link>
+                    </li>
+                ))}
+            </ul>
         </>
     );
 };

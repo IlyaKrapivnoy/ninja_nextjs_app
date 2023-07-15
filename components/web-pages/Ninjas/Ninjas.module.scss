@@ -30,7 +30,6 @@
             background: none;
             border: 1px solid $dark-platinum;
             border-radius: 5px;
-            cursor: pointer;
         }
 
         .ninjaName {
@@ -42,10 +41,6 @@
     }
 
     .listItems {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-
         li {
             color: $gray;
             padding-bottom: toRem(12px);

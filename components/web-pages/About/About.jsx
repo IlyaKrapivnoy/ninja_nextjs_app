@@ -10,7 +10,7 @@ const About = () => {
                 description={ABOUT_CUSTOM_HEAD.description}
             />
             <div>
-                <h1>About</h1>
+                <h1 className="title">About</h1>
                 <p>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                     Atque delectus deserunt distinctio dolore, facere illum
