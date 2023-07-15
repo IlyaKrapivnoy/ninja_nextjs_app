@@ -34,7 +34,7 @@
         }
 
         .ninjaName {
-            font-size: toRem(26px);
+            font-size: toRem(22px);
             font-weight: 900;
 
             @include ellipsis($max-width: toRem(240px));

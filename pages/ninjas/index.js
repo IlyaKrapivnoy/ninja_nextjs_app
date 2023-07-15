@@ -30,7 +30,7 @@ const Index = ({ ninjas }) => {
                     className={styles.single}
                 >
                     <h3>
-                        #{index + 1}. {ninja.name}
+                        #{ninja.id}. {ninja.name}
                     </h3>
                 </Link>
             ))}

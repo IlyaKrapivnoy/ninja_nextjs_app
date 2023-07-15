@@ -15,7 +15,9 @@ const Details = ({ ninja }) => {
                 <button onClick={handleGoBack} className={styles.backBtn}>
                     &larr;
                 </button>
-                <span className={styles.ninjaName}>{ninja.name}</span>
+                <span className={styles.ninjaName}>
+                    #{ninja.id}. {ninja.name}
+                </span>
             </div>
             <ul className={styles.listItems}>
                 <li>
