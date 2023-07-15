@@ -22,14 +22,16 @@ const Index = ({ ninjas }) => {
             />
 
             <h1>Total Ninjas</h1>
-            {ninjas.map((ninja) => (
+            {ninjas.map((ninja, index) => (
                 <Link
                     passHref
                     href={`/ninjas/${ninja.id}`}
                     key={ninja.id}
                     className={styles.single}
                 >
-                    <h3>{ninja.name}</h3>
+                    <h3>
+                        #{index + 1}. {ninja.name}
+                    </h3>
                 </Link>
             ))}
         </>
