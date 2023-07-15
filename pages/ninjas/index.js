@@ -1,5 +1,5 @@
 import React from 'react';
-import Link from 'next/link';
+import { useRouter } from 'next/router';
 import styles from '../../styles/ninjas.module.scss';
 import CustomHead from '../../components/base/CustomHead/CustomHead';
 import { NINJAS_CUSTOM_HEAD } from '../../constants/customHead';
@@ -14,6 +14,11 @@ export const getStaticProps = async () => {
 };
 
 const Index = ({ ninjas }) => {
+    const router = useRouter();
+
+    const handleNavigation = (id) => {
+        router.push(`/ninjas/${id}`);
+    };
     return (
         <>
             <CustomHead
@@ -24,16 +29,14 @@ const Index = ({ ninjas }) => {
             <h1 className="title">Total Ninjas</h1>
             <ul>
                 {ninjas.map((ninja) => (
-                    <li key={ninja.id} className={styles.single}>
-                        <Link
-                            passHref
-                            href={`/ninjas/${ninja.id}`}
-                            key={ninja.id}
-                        >
-                            <h3>
-                                #{ninja.id}. {ninja.name}
-                            </h3>
-                        </Link>
+                    <li
+                        key={ninja.id}
+                        className={styles.single}
+                        onClick={() => handleNavigation(ninja.id)}
+                    >
+                        <h3 className={styles.ninjaName}>
+                            #{ninja.id}. {ninja.name}
+                        </h3>
                     </li>
                 ))}
             </ul>
