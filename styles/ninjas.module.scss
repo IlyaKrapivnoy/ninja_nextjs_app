@@ -4,11 +4,19 @@
 .single {
     background: $white;
     display: block;
-    margin: toRem(20px, 10px);
-    padding: toRem(2px, 16px);
+    margin: toRem(20px, 0px);
+    padding: toRem(20px, 16px);
     border-left: 8px solid $white;
+    border-radius: 5px;
+    cursor: pointer;
 
     &:hover {
-        border-left: 8px solid $thistle-rose;
+        border-left: 8px solid $indian-red;
+        background-color: $sea-salt;
+    }
+
+    .ninjaName {
+        font-size: toRem(18px);
+        font-weight: 600;
     }
 }

@@ -1,0 +1,53 @@
+@use 'styles/variables.module' as *;
+@use 'styles/functions.module' as *;
+@use 'styles/mixins.module' as *;
+
+.ninjaCard {
+    display: flex;
+    flex-direction: column;
+    max-width: fit-content;
+    min-width: 300px;
+    padding: toRem(40px, 20px);
+    border: 1px solid $dark-platinum;
+    border-radius: 10px;
+    background-color: $white;
+
+    .headerCard {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        max-height: 30px;
+        margin-bottom: 30px;
+        padding-bottom: 30px;
+        border-bottom: 1px solid $dark-platinum;
+
+        .backBtn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: toRem(30px);
+            min-width: toRem(30px);
+            background: none;
+            border: 1px solid $dark-platinum;
+            border-radius: 5px;
+        }
+
+        .ninjaName {
+            font-size: toRem(22px);
+            font-weight: 900;
+
+            @include ellipsis($max-width: toRem(240px));
+        }
+    }
+
+    .listItems {
+        li {
+            color: $gray;
+            padding-bottom: toRem(12px);
+
+            span {
+                color: #000;
+            }
+        }
+    }
+}
