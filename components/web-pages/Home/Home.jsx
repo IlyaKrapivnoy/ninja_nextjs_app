@@ -1,6 +1,6 @@
 import React from 'react';
-import Link from 'next/link';
-import styles from './Home.module.scss';
+import { Button, Typography } from '@mui/material';
+import NextLink from 'next/link';
 import CustomHead from '../../base/CustomHead/CustomHead';
 import { HOME_CUSTOM_HEAD } from '../../../constants/customHead';
 import { TypographyWithFirstLinePadding } from '../../base/TypographyWithFirstLinePadding';
@@ -15,7 +15,13 @@ const Home = () => {
                 description={HOME_CUSTOM_HEAD.description}
             />
             <div>
-                <h1 className={styles.homeTitle}>Homepage</h1>
+                <Typography
+                    variant="h1"
+                    className="text-333 text-9xl font-semibold text-center"
+                    gutterBottom
+                >
+                    Homepage
+                </Typography>
 
                 <TypographyWithFirstLinePadding
                     paddingValue={paddingValue}
@@ -34,7 +40,7 @@ const Home = () => {
 
                 <TypographyWithFirstLinePadding
                     paddingValue={paddingValue}
-                    className="text-slate-600 leading-5"
+                    className="text-slate-600 leading-5 mb-10"
                     gutterBottom
                 >
                     Urna et pharetra pharetra massa. Sit amet mauris commodo
@@ -52,9 +58,15 @@ const Home = () => {
                     sed augue lacus viverra vitae congue eu consequat ac.
                 </TypographyWithFirstLinePadding>
 
-                <Link href="/ninjas" className={styles.btn}>
-                    See Ninja Listing
-                </Link>
+                <div className="flex justify-center">
+                    <Button
+                        variant="outlined"
+                        component={NextLink}
+                        href="/ninjas"
+                    >
+                        See Ninja Listing
+                    </Button>
+                </div>
             </div>
         </>
     );
