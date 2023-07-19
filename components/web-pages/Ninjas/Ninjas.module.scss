@@ -8,7 +8,7 @@
     max-width: fit-content;
     min-width: 300px;
     padding: toRem(40px, 20px);
-    border: 1px solid $dark-platinum;
+    border: 1px solid $gunmetal-gray;
     border-radius: 10px;
     background-color: $white;
 
@@ -19,7 +19,7 @@
         max-height: 30px;
         margin-bottom: 30px;
         padding-bottom: 30px;
-        border-bottom: 1px solid $dark-platinum;
+        border-bottom: 1px solid $gunmetal-gray;
 
         .backBtn {
             display: flex;
