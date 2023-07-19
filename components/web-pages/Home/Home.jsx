@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button, Typography } from '@mui/material';
 import NextLink from 'next/link';
 import CustomHead from '../../base/CustomHead/CustomHead';
@@ -6,7 +6,17 @@ import { HOME_CUSTOM_HEAD } from '../../../constants/customHead';
 import { TypographyWithFirstLinePadding } from '../../base/TypographyWithFirstLinePadding';
 
 const Home = () => {
+    const [loading, setLoading] = useState(false);
+
     const paddingValue = '20px';
+
+    const handleClick = () => {
+        setLoading(true);
+
+        setTimeout(() => {
+            setLoading(false);
+        }, 2000);
+    };
 
     return (
         <>
@@ -63,8 +73,15 @@ const Home = () => {
                         variant="outlined"
                         component={NextLink}
                         href="/ninjas"
+                        disabled={loading}
+                        onClick={handleClick}
+                        className={`min-w-200px ${
+                            loading
+                                ? 'cursor-not-allowed opacity-50'
+                                : 'hover:bg-gray-400'
+                        }`}
                     >
-                        See Ninja Listing
+                        {loading ? 'Loading...' : ' See Ninja Listing'}
                     </Button>
                 </div>
             </div>
