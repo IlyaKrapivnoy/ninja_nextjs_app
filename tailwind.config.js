@@ -1,6 +1,5 @@
-// tailwind.config.js
 module.exports = {
-    purge: ['./pages/**/*.{js,jsx}', './components/**/*.{js,jsx}'],
+    content: ['./pages/**/*.{js,jsx}', './components/**/*.{js,jsx}'],
     theme: {
         minWidth: {
             0: '0',

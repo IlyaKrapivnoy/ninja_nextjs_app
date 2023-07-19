@@ -37,8 +37,8 @@ const About = () => {
                     tincidunt dui ut ornare lectus sit amet est. Eget felis eget
                     nunc lobortis mattis aliquam.
                 </TypographyWithFirstLinePadding>
-                <div className="flex items-start flex-row">
-                    <div className="flex flex-col">
+                <div className="flex items-start justify-between flex-row">
+                    <div className="flex flex-col w-9/12">
                         <TypographyWithFirstLinePadding
                             paddingValue={paddingValue}
                             className="text-slate-600 leading-5 text-justify"
@@ -87,13 +87,17 @@ const About = () => {
                             quisque sagittis purus sit.
                         </TypographyWithFirstLinePadding>
                     </div>
-                    <Image
-                        src={AboutPic}
-                        alt="logo"
-                        width={130}
-                        className="min-w-min pl-10"
-                    />
+
+                    <div className="w-3/12 flex justify-center">
+                        <Image
+                            src={AboutPic}
+                            alt="Ninja boy"
+                            className="max-w-[180px] h-auto"
+                            placeholder="blur"
+                        />
+                    </div>
                 </div>
+
                 <TypographyWithFirstLinePadding
                     paddingValue={paddingValue}
                     className="text-slate-600 leading-5 text-justify"
