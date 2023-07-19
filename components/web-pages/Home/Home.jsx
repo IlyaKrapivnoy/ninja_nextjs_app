@@ -1,23 +1,9 @@
 import React from 'react';
 import Link from 'next/link';
-import { Typography } from '@mui/material';
 import styles from './Home.module.scss';
 import CustomHead from '../../base/CustomHead/CustomHead';
 import { HOME_CUSTOM_HEAD } from '../../../constants/customHead';
-import useFirstLinePadding from '../../../hooks/useFirstLinePadding';
-
-const TypographyWithFirstLinePadding = ({ paddingValue, ...props }) => {
-    const typographyRef = useFirstLinePadding(paddingValue);
-
-    return (
-        <Typography
-            variant="body1"
-            component="div"
-            ref={typographyRef}
-            {...props}
-        />
-    );
-};
+import { TypographyWithFirstLinePadding } from '../../base/TypographyWithFirstLinePadding';
 
 const Home = () => {
     const paddingValue = '20px';
