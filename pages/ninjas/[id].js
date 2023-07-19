@@ -1,5 +1,7 @@
 import React from 'react';
 import { useRouter } from 'next/router';
+import { Button } from '@mui/material';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import styles from '../../components/web-pages/Ninjas/Ninjas.module.scss';
 
 const Details = ({ ninja }) => {
@@ -12,9 +14,25 @@ const Details = ({ ninja }) => {
     return (
         <div className={styles.ninjaCard}>
             <div className={styles.headerCard}>
-                <button onClick={handleGoBack} className={styles.backBtn}>
-                    &larr;
-                </button>
+                <Button
+                    onClick={handleGoBack}
+                    variant="outlined"
+                    sx={{
+                        width: '30px',
+                        height: '30px',
+                        minWidth: '30px',
+                        borderRadius: '10px'
+                    }}
+                >
+                    <ArrowBackIcon
+                        sx={{
+                            width: '20px',
+                            height: '20px',
+                            minWidth: '20px'
+                        }}
+                    />
+                </Button>
+
                 <span className={styles.ninjaName}>
                     #{ninja.id}. {ninja.name}
                 </span>
