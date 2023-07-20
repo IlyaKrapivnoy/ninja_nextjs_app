@@ -26,57 +26,66 @@ const About = () => {
                 title={ABOUT_CUSTOM_HEAD.title}
                 description={ABOUT_CUSTOM_HEAD.description}
             />
-            <div>
-                <div className={styles.word}>
-                    <Typography
-                        variant="body1"
-                        component="span"
-                        className={cn(
-                            'text-333 text-9xl font-semibold',
-                            activeIndex === 0 ? `${styles.active}` : ''
-                        )}
-                        onClick={() => handleSpanClick(0)}
-                    >
-                        A
-                    </Typography>
-                    <span
-                        className={cn(
-                            'text-333 text-9xl font-semibold',
-                            activeIndex === 1 ? `${styles.active}` : ''
-                        )}
-                        onClick={() => handleSpanClick(1)}
-                    >
-                        b
-                    </span>
-                    <span
-                        className={cn(
-                            'text-333 text-9xl font-semibold',
-                            activeIndex === 2 ? `${styles.active}` : ''
-                        )}
-                        onClick={() => handleSpanClick(2)}
-                    >
-                        o
-                    </span>
-                    <span
-                        className={cn(
-                            'text-333 text-9xl font-semibold',
-                            activeIndex === 3 ? `${styles.active}` : ''
-                        )}
-                        onClick={() => handleSpanClick(3)}
-                    >
-                        u
-                    </span>
-                    <span
-                        className={cn(
-                            'text-333 text-9xl font-semibold',
-                            activeIndex === 4 ? `${styles.active}` : ''
-                        )}
-                        onClick={() => handleSpanClick(4)}
-                    >
-                        t
-                    </span>
-                </div>
-                {/*</Typography>*/}
+
+            <div className={cn(styles.word, 'flex justify-center pb-[40px]')}>
+                <Typography
+                    variant="body1"
+                    component="span"
+                    className={cn(
+                        'text-333 text-9xl font-semibold',
+                        activeIndex === 0 ? `${styles.active}` : ''
+                    )}
+                    onClick={() => handleSpanClick(0)}
+                >
+                    A
+                </Typography>
+                <Typography
+                    variant="body1"
+                    component="span"
+                    className={cn(
+                        'text-333 text-9xl font-semibold',
+                        activeIndex === 1 ? `${styles.active}` : ''
+                    )}
+                    onClick={() => handleSpanClick(1)}
+                >
+                    b
+                </Typography>
+                <Typography
+                    variant="body1"
+                    component="span"
+                    className={cn(
+                        'text-333 text-9xl font-semibold',
+                        activeIndex === 2 ? `${styles.active}` : ''
+                    )}
+                    onClick={() => handleSpanClick(2)}
+                >
+                    o
+                </Typography>
+                <Typography
+                    variant="body1"
+                    component="span"
+                    className={cn(
+                        'text-333 text-9xl font-semibold',
+                        activeIndex === 3 ? `${styles.active}` : ''
+                    )}
+                    onClick={() => handleSpanClick(3)}
+                >
+                    u
+                </Typography>
+                <Typography
+                    variant="body1"
+                    component="span"
+                    className={cn(
+                        'text-333 text-9xl font-semibold',
+                        activeIndex === 4 ? `${styles.active}` : ''
+                    )}
+                    onClick={() => handleSpanClick(4)}
+                >
+                    t
+                </Typography>
+            </div>
+
+            <>
                 <TypographyWithFirstLinePadding
                     paddingValue={paddingValue}
                     className="text-slate-600 leading-5 text-justify"
@@ -170,7 +179,7 @@ const About = () => {
                     pellentesque elit ullamcorper dignissim cras. Ridiculus mus
                     mauris vitae ultricies leo integer malesuada nunc vel.
                 </TypographyWithFirstLinePadding>
-            </div>
+            </>
         </>
     );
 };
