@@ -6,16 +6,25 @@ import { HOME_CUSTOM_HEAD } from '../../../constants/customHead';
 import { TypographyWithFirstLinePadding } from '../../base/TypographyWithFirstLinePadding';
 
 const Home = () => {
-    const [loading, setLoading] = useState(false);
+    const [isLoading, setLoading] = useState(false);
+    const [isActiveHomepage, setIsActiveHomepage] = useState(false);
 
     const paddingValue = '20px';
 
-    const handleClick = () => {
+    const handleButtonClick = () => {
         setLoading(true);
 
         setTimeout(() => {
             setLoading(false);
         }, 8000);
+    };
+
+    const handleActiveHomepageClick = () => {
+        setIsActiveHomepage(true);
+
+        setTimeout(() => {
+            setIsActiveHomepage(false);
+        }, 3000);
     };
 
     return (
@@ -30,7 +39,21 @@ const Home = () => {
                     className="text-333 text-9xl font-semibold text-center"
                     gutterBottom
                 >
-                    Homepage
+                    <span
+                        className={`cursor-pointer ${
+                            isActiveHomepage ? 'animate-ping' : ''
+                        }`}
+                        onClick={handleActiveHomepageClick}
+                    >
+                        H
+                    </span>
+                    <span>o</span>
+                    <span>m</span>
+                    <span>e</span>
+                    <span>p</span>
+                    <span>a</span>
+                    <span>g</span>
+                    <span>e</span>
                 </Typography>
 
                 <TypographyWithFirstLinePadding
@@ -73,15 +96,15 @@ const Home = () => {
                         variant="outlined"
                         component={NextLink}
                         href="/ninjas"
-                        disabled={loading}
-                        onClick={handleClick}
+                        disabled={isLoading}
+                        onClick={handleButtonClick}
                         className={`min-w-200px ${
-                            loading
+                            isLoading
                                 ? 'cursor-not-allowed opacity-50'
                                 : 'hover:bg-gray-400'
                         }`}
                     >
-                        {loading ? 'Loading...' : ' See Ninja Listing'}
+                        {isLoading ? 'Loading...' : ' See Ninja Listing'}
                     </Button>
                 </div>
             </div>
