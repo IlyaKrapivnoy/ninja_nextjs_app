@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import cn from 'classnames';
 
-const useAnimatedLetter = (animationClass, letter) => {
+const useAnimatedLetter = (animationClass, letter, cursor) => {
     const [isActive, setIsActive] = useState(false);
 
     const handleLetterClick = () => {
@@ -13,7 +14,7 @@ const useAnimatedLetter = (animationClass, letter) => {
     return {
         isActive,
         handleLetterClick,
-        classNames: `cursor-pointer ${isActive ? `${animationClass}` : ''}`,
+        classNames: cn(`${cursor}`, { [animationClass]: isActive }),
         letter
     };
 };

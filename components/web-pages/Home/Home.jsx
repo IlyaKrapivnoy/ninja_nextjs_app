@@ -18,8 +18,14 @@ const Home = () => {
         }, 8000);
     };
 
-    const letterH = useAnimatedLetter('animate-ping', 'H');
-    const letterO = useAnimatedLetter('animate-pulse', 'o');
+    const letterH = useAnimatedLetter('animate-ping', 'H', 'cursor-pointer');
+    const letterO = useAnimatedLetter('animate-pulse', 'o', 'cursor-pointer');
+    const letterM = useAnimatedLetter('text-red-700', 'm', 'cursor-alias');
+    const letterE = useAnimatedLetter('animate-ping', 'e', 'cursor-pointer');
+    const letterP = useAnimatedLetter('animate-pulse', 'p', 'cursor-pointer');
+    const letterA = useAnimatedLetter('animate-pulse', 'a', 'cursor-pointer');
+    const letterG = useAnimatedLetter('text-red-700', 'g', 'cursor-pointer');
+    const letterE2 = useAnimatedLetter('animate-ping', 'e', 'cursor-pointer');
 
     return (
         <>
@@ -45,13 +51,43 @@ const Home = () => {
                     >
                         {letterO.letter}
                     </span>
-                    <span>o</span>
-                    <span>m</span>
-                    <span>e</span>
-                    <span>p</span>
-                    <span>a</span>
-                    <span>g</span>
-                    <span>e</span>
+
+                    <span
+                        className={letterM.classNames}
+                        onClick={letterM.handleLetterClick}
+                    >
+                        {letterM.letter}
+                    </span>
+                    <span
+                        className={letterE.classNames}
+                        onClick={letterE.handleLetterClick}
+                    >
+                        {letterE.letter}
+                    </span>
+                    <span
+                        className={letterP.classNames}
+                        onClick={letterP.handleLetterClick}
+                    >
+                        {letterP.letter}
+                    </span>
+                    <span
+                        className={letterA.classNames}
+                        onClick={letterA.handleLetterClick}
+                    >
+                        {letterA.letter}
+                    </span>
+                    <span
+                        className={letterG.classNames}
+                        onClick={letterG.handleLetterClick}
+                    >
+                        {letterG.letter}
+                    </span>
+                    <span
+                        className={letterE2.classNames}
+                        onClick={letterE2.handleLetterClick}
+                    >
+                        {letterE2.letter}
+                    </span>
                 </Typography>
 
                 <TypographyWithFirstLinePadding
