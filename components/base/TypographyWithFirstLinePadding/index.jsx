@@ -1,5 +1,6 @@
 import React from 'react';
 import { Typography } from '@mui/material';
+import PropTypes from 'prop-types';
 import useFirstLinePadding from '../../../hooks/useFirstLinePadding';
 
 export const TypographyWithFirstLinePadding = ({ paddingValue, ...props }) => {
@@ -13,4 +14,8 @@ export const TypographyWithFirstLinePadding = ({ paddingValue, ...props }) => {
             {...props}
         />
     );
+};
+
+TypographyWithFirstLinePadding.propTypes = {
+    paddingValue: PropTypes.string
 };
