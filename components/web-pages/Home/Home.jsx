@@ -4,19 +4,28 @@ import NextLink from 'next/link';
 import CustomHead from '../../base/CustomHead/CustomHead';
 import { HOME_CUSTOM_HEAD } from '../../../constants/customHead';
 import { TypographyWithFirstLinePadding } from '../../base/TypographyWithFirstLinePadding';
+import useAnimatedLetter from '../../../hooks/useAnimatedLetter';
 
 const Home = () => {
-    const [loading, setLoading] = useState(false);
-
     const paddingValue = '20px';
 
-    const handleClick = () => {
+    const [isLoading, setLoading] = useState(false);
+    const handleButtonClick = () => {
         setLoading(true);
 
         setTimeout(() => {
             setLoading(false);
-        }, 2000);
+        }, 8000);
     };
+
+    const letterH = useAnimatedLetter('animate-ping', 'H', 'cursor-pointer');
+    const letterO = useAnimatedLetter('animate-pulse', 'o', 'cursor-pointer');
+    const letterM = useAnimatedLetter('text-red-700', 'm', 'cursor-alias');
+    const letterE = useAnimatedLetter('animate-ping', 'e', 'cursor-pointer');
+    const letterP = useAnimatedLetter('animate-pulse', 'p', 'cursor-pointer');
+    const letterA = useAnimatedLetter('animate-pulse', 'a', 'cursor-pointer');
+    const letterG = useAnimatedLetter('text-red-700', 'g', 'cursor-pointer');
+    const letterE2 = useAnimatedLetter('animate-ping', 'e', 'cursor-pointer');
 
     return (
         <>
@@ -24,13 +33,62 @@ const Home = () => {
                 title={HOME_CUSTOM_HEAD.title}
                 description={HOME_CUSTOM_HEAD.description}
             />
+
             <div>
                 <Typography
                     variant="h1"
                     className="text-333 text-9xl font-semibold text-center"
                     gutterBottom
                 >
-                    Homepage
+                    <span
+                        className={letterH.classNames}
+                        onClick={letterH.handleLetterClick}
+                    >
+                        {letterH.letter}
+                    </span>
+                    <span
+                        className={letterO.classNames}
+                        onClick={letterO.handleLetterClick}
+                    >
+                        {letterO.letter}
+                    </span>
+
+                    <span
+                        className={letterM.classNames}
+                        onClick={letterM.handleLetterClick}
+                    >
+                        {letterM.letter}
+                    </span>
+                    <span
+                        className={letterE.classNames}
+                        onClick={letterE.handleLetterClick}
+                    >
+                        {letterE.letter}
+                    </span>
+                    <span
+                        className={letterP.classNames}
+                        onClick={letterP.handleLetterClick}
+                    >
+                        {letterP.letter}
+                    </span>
+                    <span
+                        className={letterA.classNames}
+                        onClick={letterA.handleLetterClick}
+                    >
+                        {letterA.letter}
+                    </span>
+                    <span
+                        className={letterG.classNames}
+                        onClick={letterG.handleLetterClick}
+                    >
+                        {letterG.letter}
+                    </span>
+                    <span
+                        className={letterE2.classNames}
+                        onClick={letterE2.handleLetterClick}
+                    >
+                        {letterE2.letter}
+                    </span>
                 </Typography>
 
                 <TypographyWithFirstLinePadding
@@ -73,15 +131,15 @@ const Home = () => {
                         variant="outlined"
                         component={NextLink}
                         href="/ninjas"
-                        disabled={loading}
-                        onClick={handleClick}
+                        disabled={isLoading}
+                        onClick={handleButtonClick}
                         className={`min-w-200px ${
-                            loading
+                            isLoading
                                 ? 'cursor-not-allowed opacity-50'
                                 : 'hover:bg-gray-400'
                         }`}
                     >
-                        {loading ? 'Loading...' : ' See Ninja Listing'}
+                        {isLoading ? 'Loading...' : ' See Ninja Listing'}
                     </Button>
                 </div>
             </div>
