@@ -13,7 +13,7 @@ const Navbar = () => {
         <nav className={styles.nav}>
             <div className={styles.logo}>
                 <Link href="/" passHref>
-                    <Image src={Logo} width="100" alt="logo" />
+                    <Image src={Logo} width="100" alt="logo" priority />
                 </Link>
             </div>
 

@@ -15,7 +15,7 @@ const Home = () => {
 
         setTimeout(() => {
             setLoading(false);
-        }, 2000);
+        }, 8000);
     };
 
     return (
