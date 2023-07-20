@@ -1,13 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Typography } from '@mui/material';
 import Image from 'next/image';
+import cn from 'classnames';
 import CustomHead from '../../base/CustomHead/CustomHead';
 import { ABOUT_CUSTOM_HEAD } from '../../../constants/customHead';
 import { TypographyWithFirstLinePadding } from '../../base/TypographyWithFirstLinePadding';
 import AboutPic from '../../../public/about.png';
+import styles from './About.module.scss';
 
 const About = () => {
     const paddingValue = '20px';
+
+    const [activeIndex, setActiveIndex] = useState(null);
+    const handleSpanClick = (index) => {
+        setActiveIndex(index);
+
+        setTimeout(() => {
+            setActiveIndex(null);
+        }, 5000);
+    };
 
     return (
         <>
@@ -16,13 +27,56 @@ const About = () => {
                 description={ABOUT_CUSTOM_HEAD.description}
             />
             <div>
-                <Typography
-                    variant="h1"
-                    className="text-333 text-9xl font-semibold text-center"
-                    gutterBottom
-                >
-                    About
-                </Typography>
+                <div className={styles.word}>
+                    <Typography
+                        variant="body1"
+                        component="span"
+                        className={cn(
+                            'text-333 text-9xl font-semibold',
+                            activeIndex === 0 ? `${styles.active}` : ''
+                        )}
+                        onClick={() => handleSpanClick(0)}
+                    >
+                        A
+                    </Typography>
+                    <span
+                        className={cn(
+                            'text-333 text-9xl font-semibold',
+                            activeIndex === 1 ? `${styles.active}` : ''
+                        )}
+                        onClick={() => handleSpanClick(1)}
+                    >
+                        b
+                    </span>
+                    <span
+                        className={cn(
+                            'text-333 text-9xl font-semibold',
+                            activeIndex === 2 ? `${styles.active}` : ''
+                        )}
+                        onClick={() => handleSpanClick(2)}
+                    >
+                        o
+                    </span>
+                    <span
+                        className={cn(
+                            'text-333 text-9xl font-semibold',
+                            activeIndex === 3 ? `${styles.active}` : ''
+                        )}
+                        onClick={() => handleSpanClick(3)}
+                    >
+                        u
+                    </span>
+                    <span
+                        className={cn(
+                            'text-333 text-9xl font-semibold',
+                            activeIndex === 4 ? `${styles.active}` : ''
+                        )}
+                        onClick={() => handleSpanClick(4)}
+                    >
+                        t
+                    </span>
+                </div>
+                {/*</Typography>*/}
                 <TypographyWithFirstLinePadding
                     paddingValue={paddingValue}
                     className="text-slate-600 leading-5 text-justify"
