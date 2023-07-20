@@ -5,7 +5,6 @@ import CustomHead from '../../base/CustomHead/CustomHead';
 import { HOME_CUSTOM_HEAD } from '../../../constants/customHead';
 import { TypographyWithFirstLinePadding } from '../../base/TypographyWithFirstLinePadding';
 import useAnimatedLetter from '../../../hooks/useAnimatedLetter';
-import styles from '../About/About.module.scss';
 
 const Home = () => {
     const paddingValue = '20px';
