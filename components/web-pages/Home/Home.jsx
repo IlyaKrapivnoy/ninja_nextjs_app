@@ -4,6 +4,7 @@ import NextLink from 'next/link';
 import CustomHead from '../../base/CustomHead/CustomHead';
 import { HOME_CUSTOM_HEAD } from '../../../constants/customHead';
 import { TypographyWithFirstLinePadding } from '../../base/TypographyWithFirstLinePadding';
+import useAnimatedLetter from '../../../hooks/useAnimatedLetter';
 
 const Home = () => {
     const paddingValue = '20px';
@@ -17,20 +18,8 @@ const Home = () => {
         }, 8000);
     };
 
-    const [activeLetters, setActiveLetters] = useState([]);
-    const handleLetterClick = (letter) => {
-        setActiveLetters((prevLetters) =>
-            prevLetters.includes(letter)
-                ? prevLetters.filter((l) => l !== letter)
-                : [...prevLetters, letter]
-        );
-
-        setTimeout(() => {
-            setActiveLetters((prevLetters) =>
-                prevLetters.filter((l) => l !== letter)
-            );
-        }, 3000);
-    };
+    const letterH = useAnimatedLetter('animate-ping', 'H');
+    const letterO = useAnimatedLetter('animate-pulse', 'o');
 
     return (
         <>
@@ -45,21 +34,18 @@ const Home = () => {
                     gutterBottom
                 >
                     <span
-                        className={`cursor-pointer ${
-                            activeLetters.includes('H') ? 'animate-ping' : ''
-                        }`}
-                        onClick={() => handleLetterClick('H')}
+                        className={letterH.classNames}
+                        onClick={letterH.handleLetterClick}
                     >
-                        H
+                        {letterH.letter}
                     </span>
                     <span
-                        className={`cursor-pointer ${
-                            activeLetters.includes('o') ? 'animate-pulse' : ''
-                        }`}
-                        onClick={() => handleLetterClick('o')}
+                        className={letterO.classNames}
+                        onClick={letterO.handleLetterClick}
                     >
-                        o
+                        {letterO.letter}
                     </span>
+                    <span>o</span>
                     <span>m</span>
                     <span>e</span>
                     <span>p</span>
