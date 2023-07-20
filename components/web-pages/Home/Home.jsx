@@ -6,11 +6,9 @@ import { HOME_CUSTOM_HEAD } from '../../../constants/customHead';
 import { TypographyWithFirstLinePadding } from '../../base/TypographyWithFirstLinePadding';
 
 const Home = () => {
-    const [isLoading, setLoading] = useState(false);
-    const [isActiveHomepage, setIsActiveHomepage] = useState(false);
-
     const paddingValue = '20px';
 
+    const [isLoading, setLoading] = useState(false);
     const handleButtonClick = () => {
         setLoading(true);
 
@@ -19,11 +17,18 @@ const Home = () => {
         }, 8000);
     };
 
-    const handleActiveHomepageClick = () => {
-        setIsActiveHomepage(true);
+    const [activeLetters, setActiveLetters] = useState([]);
+    const handleLetterClick = (letter) => {
+        setActiveLetters((prevLetters) =>
+            prevLetters.includes(letter)
+                ? prevLetters.filter((l) => l !== letter)
+                : [...prevLetters, letter]
+        );
 
         setTimeout(() => {
-            setIsActiveHomepage(false);
+            setActiveLetters((prevLetters) =>
+                prevLetters.filter((l) => l !== letter)
+            );
         }, 3000);
     };
 
@@ -41,13 +46,20 @@ const Home = () => {
                 >
                     <span
                         className={`cursor-pointer ${
-                            isActiveHomepage ? 'animate-ping' : ''
+                            activeLetters.includes('H') ? 'animate-ping' : ''
                         }`}
-                        onClick={handleActiveHomepageClick}
+                        onClick={() => handleLetterClick('H')}
                     >
                         H
                     </span>
-                    <span>o</span>
+                    <span
+                        className={`cursor-pointer ${
+                            activeLetters.includes('o') ? 'animate-pulse' : ''
+                        }`}
+                        onClick={() => handleLetterClick('o')}
+                    >
+                        o
+                    </span>
                     <span>m</span>
                     <span>e</span>
                     <span>p</span>
