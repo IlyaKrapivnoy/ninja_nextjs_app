@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import { Button } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import styles from '../../components/web-pages/Ninjas/Ninjas.module.scss';
+import cn from 'classnames';
 
 const Details = ({ ninja }) => {
     const router = useRouter();
@@ -12,8 +13,15 @@ const Details = ({ ninja }) => {
     };
 
     return (
-        <div className={styles.ninjaCard}>
-            <div className={styles.headerCard}>
+        <div
+            className={cn(
+                styles.ninjaCard,
+                'min-w-[300px] min-h-[220px] px-5 py-10 rounded-lg'
+            )}
+        >
+            <div
+                className={cn(styles.headerCard, 'pb-7.5 mb-7.5 max-h-[30px]')}
+            >
                 <Button
                     onClick={handleGoBack}
                     variant="outlined"
