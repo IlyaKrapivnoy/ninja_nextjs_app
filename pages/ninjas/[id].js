@@ -1,9 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { useRouter } from 'next/router';
 import { Button } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import styles from '../../components/web-pages/Ninjas/Ninjas.module.scss';
 import cn from 'classnames';
+import styles from '../../components/web-pages/Ninjas/Ninjas.module.scss';
 
 const Details = ({ ninja }) => {
     const router = useRouter();
@@ -64,6 +65,20 @@ const Details = ({ ninja }) => {
             </ul>
         </div>
     );
+};
+
+Details.propTypes = {
+    ninja: PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        name: PropTypes.string.isRequired,
+        email: PropTypes.string.isRequired,
+        address: PropTypes.shape({
+            street: PropTypes.string.isRequired,
+            suite: PropTypes.string.isRequired,
+            city: PropTypes.string.isRequired,
+            zipcode: PropTypes.string.isRequired
+        }).isRequired
+    }).isRequired
 };
 
 export async function getStaticPaths() {
