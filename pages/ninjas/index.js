@@ -1,6 +1,6 @@
 import React from 'react';
 import { useRouter } from 'next/router';
-import styles from '../../styles/ninjas.module.scss';
+import { Typography } from '@mui/material';
 import CustomHead from '../../components/base/CustomHead/CustomHead';
 import { NINJAS_CUSTOM_HEAD } from '../../constants/customHead';
 
@@ -26,17 +26,17 @@ const Index = ({ ninjas }) => {
                 description={NINJAS_CUSTOM_HEAD.description}
             />
 
-            <h1 className="title">Total Ninjas</h1>
+            <Typography variant="h1" className="font-semibold text-4xl pb-4">
+                Total Ninjas
+            </Typography>
             <ul>
                 {ninjas.map((ninja) => (
                     <li
+                        className="bg-white block my-5 px-4 py-5 border-l-8 border-white rounded cursor-pointer transition-colors duration-300 hover:border-customIndianRed hover:bg-customSeaSalt"
                         key={ninja.id}
-                        className={styles.single}
                         onClick={() => handleNavigation(ninja.id)}
                     >
-                        <h3 className={styles.ninjaName}>
-                            #{ninja.id}. {ninja.name}
-                        </h3>
+                        <h3 className="text-base font-semibold">{`#${ninja.id}. ${ninja.name}`}</h3>
                     </li>
                 ))}
             </ul>

@@ -11,6 +11,10 @@ module.exports = {
             full: '100%'
         },
         extend: {
+            colors: {
+                customIndianRed: '#e0595f',
+                customSeaSalt: '#faf9f9'
+            },
             animation: {
                 wiggle: 'wiggle 1s ease-in-out infinite'
             },
