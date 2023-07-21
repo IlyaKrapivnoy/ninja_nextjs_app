@@ -6,19 +6,17 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import RefreshIcon from '@mui/icons-material/Refresh';
 import cn from 'classnames';
 import styles from '../../components/web-pages/Ninjas/Ninjas.module.scss';
+import useLoadingState from '../../hooks/useLoadingState';
 
 const Details = ({ ninja }) => {
     const router = useRouter();
 
-    const [isLoading, setLoading] = useState(false);
+    const { isLoading, handleButtonClick } = useLoadingState();
+
     const handleGoBack = () => {
         router.back();
 
-        setLoading(true);
-
-        setTimeout(() => {
-            setLoading(false);
-        }, 8000);
+        handleButtonClick();
     };
 
     return (

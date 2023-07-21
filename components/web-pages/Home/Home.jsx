@@ -1,22 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Button, Typography } from '@mui/material';
 import NextLink from 'next/link';
 import CustomHead from '../../base/CustomHead/CustomHead';
 import { HOME_CUSTOM_HEAD } from '../../../constants/customHead';
 import { TypographyWithFirstLinePadding } from '../../base/TypographyWithFirstLinePadding';
 import useAnimatedLetter from '../../../hooks/useAnimatedLetter';
+import useLoadingState from '../../../hooks/useLoadingState';
 
 const Home = () => {
     const paddingValue = '20px';
 
-    const [isLoading, setLoading] = useState(false);
-    const handleButtonClick = () => {
-        setLoading(true);
-
-        setTimeout(() => {
-            setLoading(false);
-        }, 8000);
-    };
+    const { isLoading, handleButtonClick } = useLoadingState();
 
     const letterH = useAnimatedLetter('animate-ping', 'H', 'cursor-pointer');
     const letterO = useAnimatedLetter('animate-pulse', 'o', 'cursor-pointer');
