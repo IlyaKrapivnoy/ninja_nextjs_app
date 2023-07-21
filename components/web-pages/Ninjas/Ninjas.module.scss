@@ -16,9 +16,6 @@
         border-bottom: 1px solid $gunmetal-gray;
 
         .ninjaName {
-            font-size: toRem(22px);
-            font-weight: 900;
-
             @include ellipsis($max-width: toRem(240px));
         }
     }

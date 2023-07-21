@@ -1,16 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useRouter } from 'next/router';
-import { Button } from '@mui/material';
+import { Button, Typography } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import RefreshIcon from '@mui/icons-material/Refresh';
 import cn from 'classnames';
 import styles from '../../components/web-pages/Ninjas/Ninjas.module.scss';
 
 const Details = ({ ninja }) => {
     const router = useRouter();
 
+    const [isLoading, setLoading] = useState(false);
     const handleGoBack = () => {
         router.back();
+
+        setLoading(true);
+
+        setTimeout(() => {
+            setLoading(false);
+        }, 8000);
     };
 
     return (
@@ -33,18 +41,32 @@ const Details = ({ ninja }) => {
                         borderRadius: '10px'
                     }}
                 >
-                    <ArrowBackIcon
-                        sx={{
-                            width: '20px',
-                            height: '20px',
-                            minWidth: '20px'
-                        }}
-                    />
+                    {!isLoading ? (
+                        <ArrowBackIcon
+                            sx={{
+                                width: '20px',
+                                height: '20px',
+                                minWidth: '20px'
+                            }}
+                        />
+                    ) : (
+                        <RefreshIcon
+                            sx={{
+                                width: '20px',
+                                height: '20px',
+                                minWidth: '20px'
+                            }}
+                            className="animate-spin"
+                        />
+                    )}
                 </Button>
 
-                <span className={styles.ninjaName}>
+                <Typography
+                    variant="h2"
+                    className={cn(styles.ninjaName, 'text-[22px] font-black')}
+                >
                     #{ninja.id}. {ninja.name}
-                </span>
+                </Typography>
             </div>
             <ul className={styles.listItems}>
                 <li>
