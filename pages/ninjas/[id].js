@@ -1,19 +1,34 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { useRouter } from 'next/router';
-import { Button } from '@mui/material';
+import { Button, Typography } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import RefreshIcon from '@mui/icons-material/Refresh';
+import cn from 'classnames';
 import styles from '../../components/web-pages/Ninjas/Ninjas.module.scss';
+import useLoadingState from '../../hooks/useLoadingState';
 
 const Details = ({ ninja }) => {
     const router = useRouter();
 
+    const { isLoading, handleButtonClick } = useLoadingState();
+
     const handleGoBack = () => {
         router.back();
+
+        handleButtonClick();
     };
 
     return (
-        <div className={styles.ninjaCard}>
-            <div className={styles.headerCard}>
+        <div
+            className={cn(
+                styles.ninjaCard,
+                'min-w-[330px] min-h-[220px] px-5 py-10 rounded-lg'
+            )}
+        >
+            <div
+                className={cn(styles.headerCard, 'pb-7.5 mb-7.5 max-h-[30px]')}
+            >
                 <Button
                     onClick={handleGoBack}
                     variant="outlined"
@@ -24,18 +39,32 @@ const Details = ({ ninja }) => {
                         borderRadius: '10px'
                     }}
                 >
-                    <ArrowBackIcon
-                        sx={{
-                            width: '20px',
-                            height: '20px',
-                            minWidth: '20px'
-                        }}
-                    />
+                    {!isLoading ? (
+                        <ArrowBackIcon
+                            sx={{
+                                width: '20px',
+                                height: '20px',
+                                minWidth: '20px'
+                            }}
+                        />
+                    ) : (
+                        <RefreshIcon
+                            sx={{
+                                width: '20px',
+                                height: '20px',
+                                minWidth: '20px'
+                            }}
+                            className="animate-spin"
+                        />
+                    )}
                 </Button>
 
-                <span className={styles.ninjaName}>
+                <Typography
+                    variant="h2"
+                    className={cn(styles.ninjaName, 'text-[22px] font-black')}
+                >
                     #{ninja.id}. {ninja.name}
-                </span>
+                </Typography>
             </div>
             <ul className={styles.listItems}>
                 <li>
@@ -56,6 +85,20 @@ const Details = ({ ninja }) => {
             </ul>
         </div>
     );
+};
+
+Details.propTypes = {
+    ninja: PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        name: PropTypes.string.isRequired,
+        email: PropTypes.string.isRequired,
+        address: PropTypes.shape({
+            street: PropTypes.string.isRequired,
+            suite: PropTypes.string.isRequired,
+            city: PropTypes.string.isRequired,
+            zipcode: PropTypes.string.isRequired
+        }).isRequired
+    }).isRequired
 };
 
 export async function getStaticPaths() {

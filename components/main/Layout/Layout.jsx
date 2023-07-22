@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Navbar from '../Navbar/Navbar';
 import Footer from '../Footer/Footer';
 import styles from './Layout.module.scss';
@@ -13,6 +14,10 @@ const Layout = ({ children }) => {
             <Footer role="contentinfo" aria-label="Footer" />
         </div>
     );
+};
+
+Layout.propTypes = {
+    children: PropTypes.node.isRequired
 };
 
 export default Layout;

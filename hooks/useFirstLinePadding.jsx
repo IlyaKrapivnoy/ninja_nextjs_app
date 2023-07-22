@@ -1,4 +1,5 @@
 import React, { useRef, useEffect } from 'react';
+import PropTypes from 'prop-types';
 
 const useFirstLinePadding = (paddingValue) => {
     const elementRef = useRef(null);
@@ -23,6 +24,10 @@ const useFirstLinePadding = (paddingValue) => {
     }, [paddingValue]);
 
     return elementRef;
+};
+
+useFirstLinePadding.propTypes = {
+    paddingValue: PropTypes.string.isRequired
 };
 
 export default useFirstLinePadding;

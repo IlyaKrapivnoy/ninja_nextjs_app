@@ -11,6 +11,14 @@ module.exports = {
             full: '100%'
         },
         extend: {
+            spacing: {
+                7.5: '1.875rem' // Equivalent to 30px
+            },
+            colors: {
+                customIndianRed: '#e0595f',
+                customSeaSalt: '#faf9f9',
+                customGunmetalGray: '#272d2d'
+            },
             animation: {
                 wiggle: 'wiggle 1s ease-in-out infinite'
             },
