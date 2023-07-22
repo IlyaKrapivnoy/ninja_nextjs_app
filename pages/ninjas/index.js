@@ -42,13 +42,16 @@ const Index = ({ ninjas }) => {
                             handleButtonClick();
                         }}
                     >
-                        <h3 className="text-base font-semibold">
+                        <Typography
+                            variant="h3"
+                            className="text-base font-semibold"
+                        >
                             {isLoading ? (
                                 <MoreHorizIcon className="animate-ping text-xs" />
                             ) : (
                                 `#${ninja.id}. ${ninja.name}`
-                            )}{' '}
-                        </h3>
+                            )}
+                        </Typography>
                     </li>
                 ))}
             </ul>
