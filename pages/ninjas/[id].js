@@ -23,7 +23,7 @@ const Details = ({ ninja }) => {
         <div
             className={cn(
                 styles.ninjaCard,
-                'min-w-[300px] min-h-[220px] px-5 py-10 rounded-lg'
+                'min-w-[330px] min-h-[220px] px-5 py-10 rounded-lg'
             )}
         >
             <div

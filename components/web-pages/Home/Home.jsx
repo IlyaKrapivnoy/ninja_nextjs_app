@@ -4,8 +4,7 @@ import NextLink from 'next/link';
 import CustomHead from '../../base/CustomHead/CustomHead';
 import { HOME_CUSTOM_HEAD } from '../../../constants/customHead';
 import { TypographyWithFirstLinePadding } from '../../base/TypographyWithFirstLinePadding';
-import useAnimatedLetter from '../../../hooks/useAnimatedLetter';
-import useLoadingState from '../../../hooks/useLoadingState';
+import { useLoadingState, useAnimatedLetter } from '../../../hooks';
 
 const Home = () => {
     const paddingValue = '20px';
