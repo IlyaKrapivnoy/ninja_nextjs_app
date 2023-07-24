@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
-import styles from '../components/web-pages/PageNotFound/404.module.scss';
+import { Typography } from '@mui/material';
 
 const NonFount = () => {
     const router = useRouter();
@@ -11,13 +11,24 @@ const NonFount = () => {
             router.push('/');
         }, 3000);
     }, [router]);
+
     return (
-        <div className={styles.container}>
-            <h1>Oops...</h1>
-            <h2>That page cannot be found</h2>
-            <p>
-                Go back to the <Link href="/">Homepage</Link>
-            </p>
+        <div className="text-center">
+            <Typography variant="h3" className="font-bold" gutterBottom>
+                Oops<span className="animate-ping">...</span>
+            </Typography>
+            <Typography variant="subtitle1">
+                That page cannot be found
+            </Typography>
+            <Typography variant="subtitle1">
+                Go back to the{' '}
+                <Link
+                    href="/"
+                    className="text-sky-600 underline underline-offset-2"
+                >
+                    Homepage
+                </Link>
+            </Typography>
         </div>
     );
 };

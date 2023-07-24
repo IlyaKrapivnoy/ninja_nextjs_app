@@ -7,6 +7,7 @@ import RefreshIcon from '@mui/icons-material/Refresh';
 import cn from 'classnames';
 import styles from '../../components/web-pages/Ninjas/Ninjas.module.scss';
 import useLoadingState from '../../hooks/useLoadingState';
+import { cutAfterEleventhNumber } from '../../utils/common';
 
 const Details = ({ ninja }) => {
     const router = useRouter();
@@ -81,6 +82,20 @@ const Details = ({ ninja }) => {
                 </li>
                 <li>
                     <span>Zipcode:</span> {ninja.address.zipcode}
+                </li>
+                <li>
+                    <span>Phone:</span> {cutAfterEleventhNumber(ninja.phone)}
+                </li>
+                <li>
+                    <span>Website:</span>{' '}
+                    <a
+                        href={`https://${ninja.website}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sky-600 underline underline-offset-2 "
+                    >
+                        {ninja.website}
+                    </a>
                 </li>
             </ul>
         </div>
