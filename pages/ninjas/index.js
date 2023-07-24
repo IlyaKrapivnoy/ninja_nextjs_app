@@ -5,6 +5,7 @@ import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import CustomHead from '../../components/base/CustomHead/CustomHead';
 import { NINJAS_CUSTOM_HEAD } from '../../constants/customHead';
 import { useLoadingState } from '../../hooks';
+import RotateRightIcon from '@mui/icons-material/RotateRight';
 
 export const getStaticProps = async () => {
     const res = await fetch('https://jsonplaceholder.typicode.com/users');
@@ -32,29 +33,31 @@ const Index = ({ ninjas }) => {
             <Typography variant="h1" className="font-semibold text-4xl pb-4">
                 Total Ninjas
             </Typography>
-            <ul>
-                {ninjas.map((ninja) => (
-                    <li
-                        className="bg-white block my-5 px-4 py-5 border-l-8 border-white rounded cursor-pointer transition-colors duration-300 hover:border-customIndianRed hover:bg-customSeaSalt"
-                        key={ninja.id}
-                        onClick={() => {
-                            handleNavigation(ninja.id);
-                            handleButtonClick();
-                        }}
-                    >
-                        <Typography
-                            variant="h3"
-                            className="text-base font-semibold"
+            {isLoading ? (
+                <div className="fixed top-0 left-0 w-full h-full flex justify-center items-center">
+                    <RotateRightIcon className="animate-spin h-10 w-10" />
+                </div>
+            ) : (
+                <ul>
+                    {ninjas.map((ninja) => (
+                        <li
+                            className="bg-white block my-5 px-4 py-5 border-l-8 border-white rounded cursor-pointer transition-colors duration-300 hover:border-customIndianRed hover:bg-customSeaSalt"
+                            key={ninja.id}
+                            onClick={() => {
+                                handleNavigation(ninja.id);
+                                handleButtonClick();
+                            }}
                         >
-                            {isLoading ? (
-                                <MoreHorizIcon className="animate-ping text-xs" />
-                            ) : (
-                                `#${ninja.id}. ${ninja.name}`
-                            )}
-                        </Typography>
-                    </li>
-                ))}
-            </ul>
+                            <Typography
+                                variant="h3"
+                                className="text-base font-semibold"
+                            >
+                                {`#${ninja.id}. ${ninja.name}`}
+                            </Typography>
+                        </li>
+                    ))}
+                </ul>
+            )}
         </>
     );
 };
