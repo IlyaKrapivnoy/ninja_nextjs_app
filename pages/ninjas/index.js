@@ -1,6 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useRouter } from 'next/router';
-import { Typography } from '@mui/material';
+import {
+    Typography,
+    FormControl,
+    InputLabel,
+    Select,
+    MenuItem
+} from '@mui/material';
 import RotateRightIcon from '@mui/icons-material/RotateRight';
 import Link from 'next/link';
 import CustomHead from '../../components/base/CustomHead/CustomHead';
@@ -19,10 +25,38 @@ export const getStaticProps = async () => {
 const Index = ({ ninjas }) => {
     const router = useRouter();
     const { isLoading, handleButtonClick } = useLoadingState();
+    const [sortingOption, setSortingOption] = useState('idSmallToBig');
 
     const handleNavigation = (id) => {
         router.push(`/ninjas/${id}`);
     };
+
+    const sortNinjas = (option) => {
+        switch (option) {
+            case 'idSmallToBig':
+                return [...ninjas].sort((a, b) => a.id - b.id);
+            case 'idBigToSmall':
+                return [...ninjas].sort((a, b) => b.id - a.id);
+            case 'shortestName':
+                return [...ninjas].sort(
+                    (a, b) => a.name.length - b.name.length
+                );
+            case 'longestName':
+                return [...ninjas].sort(
+                    (a, b) => b.name.length - a.name.length
+                );
+            case 'alphabet':
+                return ninjas.sort((a, b) => a.name.localeCompare(b.name));
+            default:
+                return ninjas;
+        }
+    };
+
+    const handleSortingChange = (event) => {
+        setSortingOption(event.target.value);
+    };
+
+    const sortedNinjas = sortNinjas(sortingOption);
 
     return (
         <>
@@ -34,13 +68,39 @@ const Index = ({ ninjas }) => {
             <Typography variant="h1" className="font-semibold text-4xl pb-4">
                 Total Ninjas
             </Typography>
+            <FormControl fullWidth>
+                <InputLabel id="sorting-option-label">
+                    Sorting Option
+                </InputLabel>
+                <Select
+                    labelId="sorting-option-label"
+                    id="sorting-option"
+                    value={sortingOption}
+                    label="Sorting Option"
+                    onChange={handleSortingChange}
+                >
+                    <MenuItem value="alphabet">Sort by Alphabet</MenuItem>
+                    <MenuItem value="idSmallToBig">
+                        Sort by ID (Small to Big)
+                    </MenuItem>
+                    <MenuItem value="idBigToSmall">
+                        Sort by ID (Big to Small)
+                    </MenuItem>
+                    <MenuItem value="shortestName">
+                        Sort by Shortest Name
+                    </MenuItem>
+                    <MenuItem value="longestName">
+                        Sort by Longest Name
+                    </MenuItem>
+                </Select>
+            </FormControl>
             {isLoading ? (
                 <div className="fixed top-0 left-0 w-full h-full flex justify-center items-center">
                     <RotateRightIcon className="animate-spin h-10 w-10" />
                 </div>
             ) : (
                 <ul>
-                    {ninjas.map((ninja) => (
+                    {sortedNinjas.map((ninja) => (
                         <li
                             className="bg-white block my-5 px-4 py-5 border-l-8 border-white rounded cursor-pointer transition-colors duration-300 hover:border-customIndianRed hover:bg-customSeaSalt"
                             key={ninja.id}
