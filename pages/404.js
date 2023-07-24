@@ -24,7 +24,7 @@ const NonFount = () => {
                 Go back to the{' '}
                 <Link
                     href="/"
-                    className="text-sky-600 underline underline-offset-2 "
+                    className="text-sky-600 underline underline-offset-2"
                 >
                     Homepage
                 </Link>
