@@ -7,7 +7,7 @@ import RefreshIcon from '@mui/icons-material/Refresh';
 import cn from 'classnames';
 import styles from '../../components/web-pages/Ninjas/Ninjas.module.scss';
 import useLoadingState from '../../hooks/useLoadingState';
-import Link from 'next/link';
+import { cutAfterEleventhNumber } from '../../utils/common';
 
 const Details = ({ ninja }) => {
     const router = useRouter();
@@ -71,7 +71,6 @@ const Details = ({ ninja }) => {
                 <li>
                     <span>Email:</span> {ninja.email}
                 </li>
-                {console.log({ ninja })}
                 <li>
                     <span>Street:</span> {ninja.address.street}
                 </li>
@@ -83,6 +82,9 @@ const Details = ({ ninja }) => {
                 </li>
                 <li>
                     <span>Zipcode:</span> {ninja.address.zipcode}
+                </li>
+                <li>
+                    <span>Phone:</span> {cutAfterEleventhNumber(ninja.phone)}
                 </li>
                 <li>
                     <span>Website:</span>{' '}
