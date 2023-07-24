@@ -64,36 +64,37 @@ const Index = ({ ninjas }) => {
                 title={NINJAS_CUSTOM_HEAD.title}
                 description={NINJAS_CUSTOM_HEAD.description}
             />
-
-            <Typography variant="h1" className="font-semibold text-4xl pb-4">
-                Total Ninjas
-            </Typography>
-            <FormControl fullWidth>
-                <InputLabel id="sorting-option-label">
-                    Sorting Option
-                </InputLabel>
-                <Select
-                    labelId="sorting-option-label"
-                    id="sorting-option"
-                    value={sortingOption}
-                    label="Sorting Option"
-                    onChange={handleSortingChange}
-                >
-                    <MenuItem value="alphabet">Sort by Alphabet</MenuItem>
-                    <MenuItem value="idSmallToBig">
-                        Sort by ID (Small to Big)
-                    </MenuItem>
-                    <MenuItem value="idBigToSmall">
-                        Sort by ID (Big to Small)
-                    </MenuItem>
-                    <MenuItem value="shortestName">
-                        Sort by Shortest Name
-                    </MenuItem>
-                    <MenuItem value="longestName">
-                        Sort by Longest Name
-                    </MenuItem>
-                </Select>
-            </FormControl>
+            <div className="flex justify-between items-center">
+                <Typography variant="h1" className="font-semibold text-4xl">
+                    Total Ninjas
+                </Typography>
+                <FormControl>
+                    <InputLabel id="sorting-option-label">
+                        Sorting Option
+                    </InputLabel>
+                    <Select
+                        labelId="sorting-option-label"
+                        id="sorting-option"
+                        value={sortingOption}
+                        label="Sorting Option"
+                        onChange={handleSortingChange}
+                    >
+                        <MenuItem value="idSmallToBig">
+                            Sort by ID (Small to Big)
+                        </MenuItem>
+                        <MenuItem value="idBigToSmall">
+                            Sort by ID (Big to Small)
+                        </MenuItem>
+                        <MenuItem value="shortestName">
+                            Sort by Shortest Name
+                        </MenuItem>
+                        <MenuItem value="longestName">
+                            Sort by Longest Name
+                        </MenuItem>
+                        <MenuItem value="alphabet">Sort by Alphabet</MenuItem>
+                    </Select>
+                </FormControl>
+            </div>
             {isLoading ? (
                 <div className="fixed top-0 left-0 w-full h-full flex justify-center items-center">
                     <RotateRightIcon className="animate-spin h-10 w-10" />
