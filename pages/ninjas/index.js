@@ -5,10 +5,12 @@ import {
     FormControl,
     InputLabel,
     Select,
-    MenuItem
+    MenuItem,
+    IconButton
 } from '@mui/material';
 import RotateRightIcon from '@mui/icons-material/RotateRight';
 import Link from 'next/link';
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import CustomHead from '../../components/base/CustomHead/CustomHead';
 import { NINJAS_CUSTOM_HEAD } from '../../constants/customHead';
 import { useLoadingState } from '../../hooks';
@@ -22,13 +24,15 @@ export const getStaticProps = async () => {
     };
 };
 
-const Index = ({ ninjas }) => {
+const Index = ({ ninjas: initialNinjas }) => {
     const router = useRouter();
     const { isLoading, handleButtonClick } = useLoadingState();
     const [sortingOption, setSortingOption] = useState('idSmallToBig');
+    const [ninjas, setNinjas] = useState(initialNinjas);
 
     const handleNavigation = (id) => {
         router.push(`/ninjas/${id}`);
+        handleButtonClick();
     };
 
     const sortNinjas = (option) => {
@@ -57,6 +61,12 @@ const Index = ({ ninjas }) => {
     };
 
     const sortedNinjas = sortNinjas(sortingOption);
+
+    const handleDelete = (id) => {
+        setNinjas((prevNinjas) =>
+            prevNinjas.filter((ninja) => ninja.id !== id)
+        );
+    };
 
     return (
         <>
@@ -103,18 +113,30 @@ const Index = ({ ninjas }) => {
                 <ul>
                     {sortedNinjas.map((ninja) => (
                         <li
-                            className="bg-white block my-5 px-4 py-5 border-l-8 border-white rounded cursor-pointer transition-colors duration-300 hover:border-customIndianRed hover:bg-customSeaSalt"
+                            className="flex items-center justify-between bg-white block my-5 px-4 py-5 border-l-8 border-white rounded cursor-pointer transition-colors duration-300 hover:border-customIndianRed hover:bg-customSeaSalt"
                             key={ninja.id}
-                            onClick={() => {
-                                handleNavigation(ninja.id);
-                                handleButtonClick();
-                            }}
                         >
-                            <Link href={`/ninjas/${ninja.id}`} legacyBehavior>
-                                <a className="text-base font-semibold visited:text-neutral-500">
-                                    {`#${ninja.id}. ${ninja.name}`}
-                                </a>
-                            </Link>
+                            <div
+                                onClick={() => {
+                                    handleNavigation(ninja.id);
+                                }}
+                            >
+                                <Link
+                                    href={`/ninjas/${ninja.id}`}
+                                    legacyBehavior
+                                >
+                                    <a className="text-base font-semibold visited:text-neutral-500">
+                                        {`#${ninja.id}. ${ninja.name}`}
+                                    </a>
+                                </Link>
+                            </div>
+                            <IconButton
+                                edge="end"
+                                aria-label="delete"
+                                onClick={() => handleDelete(ninja.id)}
+                            >
+                                <DeleteForeverIcon />
+                            </IconButton>
                         </li>
                     ))}
                 </ul>
