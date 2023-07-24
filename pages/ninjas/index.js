@@ -1,11 +1,11 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 import { Typography } from '@mui/material';
-import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
+import RotateRightIcon from '@mui/icons-material/RotateRight';
+import Link from 'next/link';
 import CustomHead from '../../components/base/CustomHead/CustomHead';
 import { NINJAS_CUSTOM_HEAD } from '../../constants/customHead';
 import { useLoadingState } from '../../hooks';
-import RotateRightIcon from '@mui/icons-material/RotateRight';
 
 export const getStaticProps = async () => {
     const res = await fetch('https://jsonplaceholder.typicode.com/users');
@@ -23,6 +23,7 @@ const Index = ({ ninjas }) => {
     const handleNavigation = (id) => {
         router.push(`/ninjas/${id}`);
     };
+
     return (
         <>
             <CustomHead
@@ -48,12 +49,11 @@ const Index = ({ ninjas }) => {
                                 handleButtonClick();
                             }}
                         >
-                            <Typography
-                                variant="h3"
-                                className="text-base font-semibold"
-                            >
-                                {`#${ninja.id}. ${ninja.name}`}
-                            </Typography>
+                            <Link href={`/ninjas/${ninja.id}`} legacyBehavior>
+                                <a className="text-base font-semibold visited:text-neutral-500">
+                                    {`#${ninja.id}. ${ninja.name}`}
+                                </a>
+                            </Link>
                         </li>
                     ))}
                 </ul>
