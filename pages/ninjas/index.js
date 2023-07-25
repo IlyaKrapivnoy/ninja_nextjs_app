@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import {
     Typography,
@@ -13,7 +13,7 @@ import Link from 'next/link';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import CustomHead from '../../components/base/CustomHead/CustomHead';
 import { NINJAS_CUSTOM_HEAD } from '../../constants/customHead';
-import { useLoadingState } from '../../hooks';
+import { useHydratedState, useLoadingState } from '../../hooks';
 
 export const getStaticProps = async () => {
     const res = await fetch('https://jsonplaceholder.typicode.com/users');
@@ -29,17 +29,12 @@ const Index = ({ ninjas: initialNinjas }) => {
     const { isLoading, handleButtonClick } = useLoadingState();
     const [sortingOption, setSortingOption] = useState('idSmallToBig');
     const [ninjas, setNinjas] = useState(initialNinjas);
+    const isHydrated = useHydratedState();
 
     const handleNavigation = (id) => {
         router.push(`/ninjas/${id}`);
         handleButtonClick();
     };
-
-    const [isHydrated, setIsHydrated] = useState(false);
-
-    useEffect(() => {
-        setIsHydrated(true);
-    }, []);
 
     const sortNinjas = (option) => {
         switch (option) {
@@ -82,11 +77,11 @@ const Index = ({ ninjas: initialNinjas }) => {
             />
 
             <div className="flex flex-col items-center pb-10">
-                <div className="flex justify-between pb-6 flex w-full items-center">
+                <div className="flex justify-between pb-6 flex w-full items-center h-[56px]">
                     <Typography variant="h1" className="font-semibold text-4xl">
                         Total Ninjas
                     </Typography>
-                    <FormControl className={isHydrated ? '' : 'invisible'}>
+                    <FormControl className={isHydrated ? '' : 'hidden'}>
                         <InputLabel id="sorting-option-label">
                             Sorting Option
                         </InputLabel>
