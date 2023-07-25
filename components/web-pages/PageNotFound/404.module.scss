@@ -13,8 +13,25 @@ $c-height: 90vmin;
     top: 50%;
     width: $c-width;
     height: 0.866 * $c-height;
-    margin-left: -$c-width/2;
+    margin-left: -$c-width / 2;
     margin-top: -0.433 * $c-height;
+
+    .ellipse {
+        position: relative;
+        width: $c-width;
+        height: 0.75 * $c-width;
+        background: $white;
+        border-radius: 50%;
+        z-index: 1;
+    }
+
+    .ray {
+        position: relative;
+        border-top: 0.4 * $c-height solid $battleship-gray;
+        border-left: 0.13 * $c-height solid transparent;
+        border-right: 0.13 * $c-height solid transparent;
+        margin-top: -0.14 * $c-height;
+    }
 
     &:first-child {
         transform-origin: 50% 100%;
@@ -32,23 +49,6 @@ $c-height: 90vmin;
         &:checked ~ .ray {
             opacity: 0;
         }
-    }
-
-    .ellipse {
-        position: relative;
-        width: $c-width;
-        height: 0.75 * $c-width;
-        background: $white;
-        border-radius: 50%;
-        z-index: 1;
-    }
-
-    .ray {
-        position: relative;
-        border-top: 0.4 * $c-height solid $battleship-gray;
-        border-left: 0.13 * $c-height solid transparent;
-        border-right: 0.13 * $c-height solid transparent;
-        margin-top: -0.14 * $c-height;
     }
 
     .head {
@@ -92,10 +92,9 @@ $c-height: 90vmin;
 .msg {
     position: absolute;
     width: $c-width;
-    margin-left: -$c-width/2;
+    margin-left: -$c-width / 2;
     left: 50%;
     text-align: center;
-    font-family: 'Fjalla One', sans-serif;
     color: $common-background;
     -webkit-user-select: none;
     -moz-user-select: none;
