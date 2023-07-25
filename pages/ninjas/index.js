@@ -74,36 +74,51 @@ const Index = ({ ninjas: initialNinjas }) => {
                 title={NINJAS_CUSTOM_HEAD.title}
                 description={NINJAS_CUSTOM_HEAD.description}
             />
-            <div className="flex justify-between items-center">
-                <Typography variant="h1" className="font-semibold text-4xl">
-                    Total Ninjas
+
+            <div className="flex flex-col items-center pb-10">
+                <div className="flex justify-between pb-6 flex w-full items-center">
+                    <Typography variant="h1" className="font-semibold text-4xl">
+                        Total Ninjas
+                    </Typography>
+                    <FormControl>
+                        <InputLabel id="sorting-option-label">
+                            Sorting Option
+                        </InputLabel>
+                        <Select
+                            labelId="sorting-option-label"
+                            id="sorting-option"
+                            value={sortingOption}
+                            label="Sorting Option"
+                            onChange={handleSortingChange}
+                        >
+                            <MenuItem value="idSmallToBig">
+                                Sort by ID (Small to Big)
+                            </MenuItem>
+                            <MenuItem value="idBigToSmall">
+                                Sort by ID (Big to Small)
+                            </MenuItem>
+                            <MenuItem value="shortestName">
+                                Sort by Shortest Name
+                            </MenuItem>
+                            <MenuItem value="longestName">
+                                Sort by Longest Name
+                            </MenuItem>
+                            <MenuItem value="alphabet">
+                                Sort by Alphabet
+                            </MenuItem>
+                        </Select>
+                    </FormControl>
+                </div>
+
+                <Typography variant="body1" className="indent-6">
+                    This a long established fact that a reader will be
+                    distracted by the readable content of a page when looking at
+                    its layout. The point of using Lorem Ipsum is that it has a
+                    more-or-less normal distribution of letters, as opposed to
+                    using 'Content here, content here', making it look like
+                    readable English. Many desktop publishing packages and web
+                    page editors now use Lorem Ipsum.
                 </Typography>
-                <FormControl>
-                    <InputLabel id="sorting-option-label">
-                        Sorting Option
-                    </InputLabel>
-                    <Select
-                        labelId="sorting-option-label"
-                        id="sorting-option"
-                        value={sortingOption}
-                        label="Sorting Option"
-                        onChange={handleSortingChange}
-                    >
-                        <MenuItem value="idSmallToBig">
-                            Sort by ID (Small to Big)
-                        </MenuItem>
-                        <MenuItem value="idBigToSmall">
-                            Sort by ID (Big to Small)
-                        </MenuItem>
-                        <MenuItem value="shortestName">
-                            Sort by Shortest Name
-                        </MenuItem>
-                        <MenuItem value="longestName">
-                            Sort by Longest Name
-                        </MenuItem>
-                        <MenuItem value="alphabet">Sort by Alphabet</MenuItem>
-                    </Select>
-                </FormControl>
             </div>
             {isLoading ? (
                 <div className="fixed top-0 left-0 w-full h-full flex justify-center items-center">
