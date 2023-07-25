@@ -1,0 +1,116 @@
+@use 'styles/variables.module' as *;
+@use 'styles/mixins.module' as *;
+
+@include message('first');
+@include message('second');
+
+$c-width: 36vmin;
+$c-height: 90vmin;
+
+.container {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: $c-width;
+    height: 0.866 * $c-height;
+    margin-left: -$c-width / 2;
+    margin-top: -0.433 * $c-height;
+
+    .ellipse {
+        position: relative;
+        width: $c-width;
+        height: 0.75 * $c-width;
+        background: $white;
+        border-radius: 50%;
+        z-index: 1;
+    }
+
+    .ray {
+        position: relative;
+        border-top: 0.4 * $c-height solid $battleship-gray;
+        border-left: 0.13 * $c-height solid transparent;
+        border-right: 0.13 * $c-height solid transparent;
+        margin-top: -0.14 * $c-height;
+    }
+
+    &:first-child {
+        transform-origin: 50% 100%;
+        @include animation-use(rotate, 9s);
+    }
+
+    &:last-of-type {
+        pointer-events: none;
+    }
+
+    #switch {
+        display: none;
+
+        &:checked ~ .ellipse,
+        &:checked ~ .ray {
+            opacity: 0;
+        }
+    }
+
+    .head {
+        position: relative;
+        width: 0.4 * $c-width;
+        height: 0.02 * $c-height;
+        margin-left: 0.3 * $c-width;
+        background: $web-orange;
+    }
+
+    .neck {
+        position: relative;
+        width: 0.205 * $c-width;
+        margin-left: 0.3 * $c-width;
+        border-top: 0.12 * $c-width solid $jet-gray;
+        border-left: 0.1 * $c-width solid transparent;
+        border-right: 0.1 * $c-width solid transparent;
+    }
+
+    .body {
+        position: relative;
+        width: 0.203 * $c-width;
+        margin-left: 0.4 * $c-width;
+        height: 0.24 * $c-height;
+        background: $dim-gray;
+    }
+
+    label {
+        position: absolute;
+        top: 0.04 * $c-height;
+        left: 0.073 * $c-width;
+        width: 0.04 * $c-width;
+        height: 0.04 * $c-height;
+        border: 0.012 * $c-width solid $jet-gray;
+        background: $web-orange;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+}
+
+.msg {
+    position: absolute;
+    width: $c-width;
+    margin-left: -$c-width / 2;
+    left: 50%;
+    text-align: center;
+    color: $common-background;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    z-index: 2;
+
+    &.msg1 {
+        top: 0.07 * $c-height;
+        font-size: 12vmin;
+        @include animation-use(msg_first, 9s);
+    }
+
+    &.msg2 {
+        top: 0.12 * $c-height;
+        font-size: 4.2vmin;
+        @include animation-use(msg_second, 9s);
+    }
+}
