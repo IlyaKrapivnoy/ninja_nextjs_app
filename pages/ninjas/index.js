@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import {
     Typography,
@@ -34,6 +34,12 @@ const Index = ({ ninjas: initialNinjas }) => {
         router.push(`/ninjas/${id}`);
         handleButtonClick();
     };
+
+    const [isHydrated, setIsHydrated] = useState(false);
+
+    useEffect(() => {
+        setIsHydrated(true);
+    }, []);
 
     const sortNinjas = (option) => {
         switch (option) {
@@ -80,7 +86,7 @@ const Index = ({ ninjas: initialNinjas }) => {
                     <Typography variant="h1" className="font-semibold text-4xl">
                         Total Ninjas
                     </Typography>
-                    <FormControl>
+                    <FormControl className={isHydrated ? '' : 'invisible'}>
                         <InputLabel id="sorting-option-label">
                             Sorting Option
                         </InputLabel>
@@ -115,9 +121,9 @@ const Index = ({ ninjas: initialNinjas }) => {
                     distracted by the readable content of a page when looking at
                     its layout. The point of using Lorem Ipsum is that it has a
                     more-or-less normal distribution of letters, as opposed to
-                    using 'Content here, content here', making it look like
-                    readable English. Many desktop publishing packages and web
-                    page editors now use Lorem Ipsum.
+                    using &apos;Content here, content here&apos;, making it look
+                    like readable English. Many desktop publishing packages and
+                    web page editors now use Lorem Ipsum.
                 </Typography>
             </div>
             {isLoading ? (
