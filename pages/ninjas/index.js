@@ -5,13 +5,15 @@ import {
     FormControl,
     InputLabel,
     Select,
-    MenuItem
+    MenuItem,
+    IconButton
 } from '@mui/material';
 import RotateRightIcon from '@mui/icons-material/RotateRight';
 import Link from 'next/link';
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import CustomHead from '../../components/base/CustomHead/CustomHead';
 import { NINJAS_CUSTOM_HEAD } from '../../constants/customHead';
-import { useLoadingState } from '../../hooks';
+import { useHydratedState, useLoadingState } from '../../hooks';
 
 export const getStaticProps = async () => {
     const res = await fetch('https://jsonplaceholder.typicode.com/users');
@@ -22,13 +24,16 @@ export const getStaticProps = async () => {
     };
 };
 
-const Index = ({ ninjas }) => {
+const Index = ({ ninjas: initialNinjas }) => {
     const router = useRouter();
     const { isLoading, handleButtonClick } = useLoadingState();
     const [sortingOption, setSortingOption] = useState('idSmallToBig');
+    const [ninjas, setNinjas] = useState(initialNinjas);
+    const isHydrated = useHydratedState();
 
     const handleNavigation = (id) => {
         router.push(`/ninjas/${id}`);
+        handleButtonClick();
     };
 
     const sortNinjas = (option) => {
@@ -58,42 +63,63 @@ const Index = ({ ninjas }) => {
 
     const sortedNinjas = sortNinjas(sortingOption);
 
+    const handleDelete = (id) => {
+        setNinjas((prevNinjas) =>
+            prevNinjas.filter((ninja) => ninja.id !== id)
+        );
+    };
+
     return (
         <>
             <CustomHead
                 title={NINJAS_CUSTOM_HEAD.title}
                 description={NINJAS_CUSTOM_HEAD.description}
             />
-            <div className="flex justify-between items-center">
-                <Typography variant="h1" className="font-semibold text-4xl">
-                    Total Ninjas
+
+            <div className="flex flex-col items-center pb-10">
+                <div className="flex justify-between pb-6 flex w-full items-center h-[56px]">
+                    <Typography variant="h1" className="font-semibold text-4xl">
+                        Total Ninjas
+                    </Typography>
+                    <FormControl className={isHydrated ? '' : 'hidden'}>
+                        <InputLabel id="sorting-option-label">
+                            Sorting Option
+                        </InputLabel>
+                        <Select
+                            labelId="sorting-option-label"
+                            id="sorting-option"
+                            value={sortingOption}
+                            label="Sorting Option"
+                            onChange={handleSortingChange}
+                        >
+                            <MenuItem value="idSmallToBig">
+                                Sort by ID (Small to Big)
+                            </MenuItem>
+                            <MenuItem value="idBigToSmall">
+                                Sort by ID (Big to Small)
+                            </MenuItem>
+                            <MenuItem value="shortestName">
+                                Sort by Shortest Name
+                            </MenuItem>
+                            <MenuItem value="longestName">
+                                Sort by Longest Name
+                            </MenuItem>
+                            <MenuItem value="alphabet">
+                                Sort by Alphabet
+                            </MenuItem>
+                        </Select>
+                    </FormControl>
+                </div>
+
+                <Typography variant="body1" className="indent-6">
+                    This a long established fact that a reader will be
+                    distracted by the readable content of a page when looking at
+                    its layout. The point of using Lorem Ipsum is that it has a
+                    more-or-less normal distribution of letters, as opposed to
+                    using &apos;Content here, content here&apos;, making it look
+                    like readable English. Many desktop publishing packages and
+                    web page editors now use Lorem Ipsum.
                 </Typography>
-                <FormControl>
-                    <InputLabel id="sorting-option-label">
-                        Sorting Option
-                    </InputLabel>
-                    <Select
-                        labelId="sorting-option-label"
-                        id="sorting-option"
-                        value={sortingOption}
-                        label="Sorting Option"
-                        onChange={handleSortingChange}
-                    >
-                        <MenuItem value="idSmallToBig">
-                            Sort by ID (Small to Big)
-                        </MenuItem>
-                        <MenuItem value="idBigToSmall">
-                            Sort by ID (Big to Small)
-                        </MenuItem>
-                        <MenuItem value="shortestName">
-                            Sort by Shortest Name
-                        </MenuItem>
-                        <MenuItem value="longestName">
-                            Sort by Longest Name
-                        </MenuItem>
-                        <MenuItem value="alphabet">Sort by Alphabet</MenuItem>
-                    </Select>
-                </FormControl>
             </div>
             {isLoading ? (
                 <div className="fixed top-0 left-0 w-full h-full flex justify-center items-center">
@@ -103,18 +129,30 @@ const Index = ({ ninjas }) => {
                 <ul>
                     {sortedNinjas.map((ninja) => (
                         <li
-                            className="bg-white block my-5 px-4 py-5 border-l-8 border-white rounded cursor-pointer transition-colors duration-300 hover:border-customIndianRed hover:bg-customSeaSalt"
+                            className="flex items-center justify-between bg-white block my-5 px-4 py-5 border-l-8 border-white rounded cursor-pointer transition-colors duration-300 hover:border-customIndianRed hover:bg-customSeaSalt"
                             key={ninja.id}
-                            onClick={() => {
-                                handleNavigation(ninja.id);
-                                handleButtonClick();
-                            }}
                         >
-                            <Link href={`/ninjas/${ninja.id}`} legacyBehavior>
-                                <a className="text-base font-semibold visited:text-neutral-500">
-                                    {`#${ninja.id}. ${ninja.name}`}
-                                </a>
-                            </Link>
+                            <div
+                                onClick={() => {
+                                    handleNavigation(ninja.id);
+                                }}
+                            >
+                                <Link
+                                    href={`/ninjas/${ninja.id}`}
+                                    legacyBehavior
+                                >
+                                    <a className="text-base font-semibold visited:text-neutral-500">
+                                        {`#${ninja.id}. ${ninja.name}`}
+                                    </a>
+                                </Link>
+                            </div>
+                            <IconButton
+                                edge="end"
+                                aria-label="delete"
+                                onClick={() => handleDelete(ninja.id)}
+                            >
+                                <DeleteForeverIcon />
+                            </IconButton>
                         </li>
                     ))}
                 </ul>
