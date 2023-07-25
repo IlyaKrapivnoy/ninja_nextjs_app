@@ -1,7 +1,7 @@
-import Link from 'next/link';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { Typography } from '@mui/material';
+import cn from 'classnames';
+import styles from '../components/web-pages/PageNotFound/404.module.scss';
 
 const NonFount = () => {
     const router = useRouter();
@@ -9,27 +9,28 @@ const NonFount = () => {
     useEffect(() => {
         setTimeout(() => {
             router.push('/');
-        }, 3000);
+        }, 6000);
     }, [router]);
 
     return (
-        <div className="text-center">
-            <Typography variant="h3" className="font-bold" gutterBottom>
-                Oops<span className="animate-ping">...</span>
-            </Typography>
-            <Typography variant="subtitle1">
-                That page cannot be found
-            </Typography>
-            <Typography variant="subtitle1">
-                Go back to the{' '}
-                <Link
-                    href="/"
-                    className="text-sky-600 underline underline-offset-2"
-                >
-                    Homepage
-                </Link>
-            </Typography>
-        </div>
+        <>
+            <div className={styles.container}>
+                <input type="checkbox" id={styles.switch} />
+                <div className={styles.ellipse}></div>
+                <div className={styles.ray}></div>
+                <div className={styles.head}></div>
+                <div className={styles.neck}></div>
+                <div className={styles.body}>
+                    <label htmlFor="switch"></label>
+                </div>
+            </div>
+            <div className={styles.container}>
+                <div className={cn(styles.msg, styles.msg1)}>404</div>
+                <div className={cn(styles.msg, styles.msg2)}>
+                    Page Not Found
+                </div>
+            </div>
+        </>
     );
 };
 export default NonFount;

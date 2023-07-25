@@ -4,3 +4,66 @@
     white-space: nowrap;
     text-overflow: ellipsis;
 }
+
+// for 404 page - start
+@mixin animation($name) {
+    @-webkit-keyframes #{$name} {
+        @content;
+    }
+    @-moz-keyframes #{$name} {
+        @content;
+    }
+    @-o-keyframes #{$name} {
+        @content;
+    }
+    @keyframes #{$name} {
+        @content;
+    }
+}
+
+@mixin animation-use($name, $time) {
+    -webkit-animation: $name $time infinite linear;
+    -moz-animation: $name $time infinite linear;
+    -o-animation: $name $time infinite linear;
+    animation: $name $time infinite linear;
+}
+
+@mixin rotate($val) {
+    -webkit-transform: rotate($val);
+    -ms-transform: rotate($val);
+    transform: rotate($val);
+}
+
+@include animation(rotate) {
+    25% {
+        @include rotate(-28deg);
+    }
+    75% {
+        @include rotate(28deg);
+    }
+}
+
+@mixin message($val) {
+    @include animation(msg_ + $val) {
+        0%,
+        25%,
+        75.001%,
+        100% {
+            @if ($val == 'first') {
+                opacity: 1;
+            } @else {
+                opacity: 0;
+            }
+        }
+
+        25.001%,
+        75% {
+            @if ($val == 'first') {
+                opacity: 0;
+            } @else {
+                opacity: 1;
+            }
+        }
+    }
+}
+// for 404 page - end
