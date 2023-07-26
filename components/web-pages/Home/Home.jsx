@@ -27,7 +27,7 @@ const Home = () => {
                 description={HOME_CUSTOM_HEAD.description}
             />
 
-            <div>
+            <>
                 <Typography
                     variant="h1"
                     className="text-333 text-9xl font-semibold text-center"
@@ -135,7 +135,7 @@ const Home = () => {
                         {isLoading ? 'Loading...' : ' See Ninja Listing'}
                     </Button>
                 </div>
-            </div>
+            </>
         </>
     );
 };

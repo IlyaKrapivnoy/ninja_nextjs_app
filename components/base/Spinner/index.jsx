@@ -1,12 +1,6 @@
 import React from 'react';
 import styles from './Spinner.module.scss';
 
-const Spinner = () => {
-    return (
-        <section>
-            <div className={styles.skRotatingPlane}></div>
-        </section>
-    );
-};
+const Spinner = () => <div className={styles.rotatingPlane}></div>;
 
 export default Spinner;

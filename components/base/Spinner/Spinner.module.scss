@@ -1,15 +1,15 @@
 $spinkit-size: 4em !default;
 $spinkit-spinner-color: #337ab7 !default;
 
-.skRotatingPlane {
+.rotatingPlane {
     width: $spinkit-size;
     height: $spinkit-size;
     margin: auto;
     background-color: $spinkit-spinner-color;
-    animation: sk-rotating-plane 1.2s infinite ease-in-out;
+    animation: rotating-plane 1.2s infinite ease-in-out;
 }
 
-@keyframes sk-rotating-plane {
+@keyframes rotating-plane {
     0% {
         transform: perspective(120px) rotateX(0deg) rotateY(0deg);
     }
