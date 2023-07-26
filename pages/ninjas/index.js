@@ -123,7 +123,7 @@ const Index = ({ ninjas: initialNinjas }) => {
             </div>
             {isLoading ? (
                 <div className="fixed top-0 left-0 w-full h-full flex justify-center items-center">
-                    <Spinner />
+                    <Spinner small danger circle />
                 </div>
             ) : (
                 <ul>
