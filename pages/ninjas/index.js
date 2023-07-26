@@ -8,12 +8,12 @@ import {
     MenuItem,
     IconButton
 } from '@mui/material';
-import RotateRightIcon from '@mui/icons-material/RotateRight';
 import Link from 'next/link';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import CustomHead from '../../components/base/CustomHead/CustomHead';
 import { NINJAS_CUSTOM_HEAD } from '../../constants/customHead';
 import { useHydratedState, useLoadingState } from '../../hooks';
+import Spinner from '../../components/base/Spinner';
 
 export const getStaticProps = async () => {
     const res = await fetch('https://jsonplaceholder.typicode.com/users');
@@ -123,7 +123,7 @@ const Index = ({ ninjas: initialNinjas }) => {
             </div>
             {isLoading ? (
                 <div className="fixed top-0 left-0 w-full h-full flex justify-center items-center">
-                    <RotateRightIcon className="animate-spin h-10 w-10" />
+                    <Spinner small danger circle />
                 </div>
             ) : (
                 <ul>
