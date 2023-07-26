@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import cn from 'classnames';
 import styles from './Spinner.module.scss';
 
@@ -22,6 +23,12 @@ const Spinner = ({ danger, small, circle }) => {
             )}
         ></div>
     );
+};
+
+Spinner.propTypes = {
+    danger: PropTypes.bool,
+    small: PropTypes.bool,
+    circle: PropTypes.bool
 };
 
 export default Spinner;
